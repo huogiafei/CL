@@ -1,0 +1,123 @@
+/**** LOGIN & SIGN UP ****/
+.login-bg {
+    background: url("http://img.yeep.com.au/banner/home_banner.jpg") center no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 100%;
+}
+
+.login-bg:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(31, 11, 15, 0.4);
+    z-index: -1;
+}
+
+.login-wrap {
+    width: 450px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.login-box {
+    background-color: #fff;
+    height: 100%;
+    padding: 2rem 3rem;
+    border-radius: 3px;
+}
+
+.login-logo {
+    display: block;
+    margin: 0 auto 10px auto;
+    height: 50px;
+}
+
+.login-tabs {
+    margin-bottom: 10px;
+}
+
+.login-content {
+    padding: 0 !important;;
+}
+
+.login-row {
+    margin-bottom: 10px;
+}
+
+.login-remember {
+    margin-bottom: 20px;
+}
+
+.login-submit {
+    display: block;
+    width: 100%;
+}
+
+/**** SIGN UP ****/
+.pwd-show {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 24px;
+    color: #ccc;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.pwd-show.active {
+    color: #E74C3C;
+}
+
+.sign-terms {
+    margin-bottom: 20px;
+}
+
+/**** SIGN UP SUCCESS ****/
+.sign-finish-title {
+    font-size: 1.8rem;
+    font-family: Raleway, "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif, "Roboto", sans-serif;
+    text-align: center;
+    line-height: 1.2;
+    margin: 10px 0 0 0;
+}
+
+.sign-finish-text {
+    font-size: 1rem;
+    color: #444;
+}
+
+.sign-finish-link {
+    display: block;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 700px) {
+
+    .login-bg {
+        background: url("http://img.yeep.com.au/banner/home_banner_m@2x.jpg") no-repeat center/cover;
+        min-height: 100vh;
+        height: auto;
+    }
+
+    .login-wrap {
+        width: 90%;
+        padding-top: 50px;
+    }
+
+    .login-box {
+        padding: 1rem 1.5rem;
+    }
+
+    .login-logo {
+        height: 30px;
+        margin: 0 auto;
+    }
+
+    .login-forget {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,413 @@
+<div class="container cl-wrapper add-store" id="addApp" data-pr='add_store'>
+    <input type="hidden" id="pv" value="addStore">
+
+    <!-- loading -->
+    <div class="cl-blank-loading" v-show="isLoading"></div>
+    <div class="row" style="display: none;" v-show="!isLoading">
+        <div class="col l2 hide-on-med-and-down add-store-blank"></div>
+        <div class="col s12 m12 l12 add-store-outer">
+            <div class="card" id="addStore">
+                <!-- ADD STEPPER => as-->
+                <div class="row cl-red add-step-wrap">
+                    <div v-for="(step,index) of stepper.title"
+                         :class="['col','s2','m2','as-item',
+                        {'active':curStep == index+1},
+                        {'offset-s1':index == 0},
+                        {'offset-m1':index == 0}]">
+                        <div class="circle as-icon white ">
+                            <i class="as-num cl-red-text">{{index+1}}</i>
+                            <i class="as-tick material-icons">done</i>
+                        </div>
+                        <p class="as-text white-text hide-on-small-only">{{step}}</p>
+                    </div>
+                </div>
+
+                <!-- STEP CONTENT -->
+                <div class="row add-main">
+                    <!-- STEP1 : BASIC INFO -->
+                    <div class="col s12 m10 offset-m1 l6 offset-l3 add-page" id="step1" v-show="curStep == 1">
+                        <form>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="storeName" type="text" class="validate" v-model="step1.storeName"
+                                           @keyup="checkNull" required>
+                                    <label for="storeName" data-error="Please enter your business name.">Business name
+                                        <span class="cl-red-text"> * </span>
+                                    </label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="storeTel" type="text" class="validate" v-model="step1.tel"
+                                           @keyup="checkNull" required>
+                                    <label for="storeTel" data-error="Please enter your business tel.">Tel
+                                        <span class="cl-red-text"> * </span>
+                                    </label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate" v-model="step1.email"
+                                           @keyup="checkNull" required>
+                                    <label for="email" data-error="Please enter your business email.">Email
+                                        <span class="cl-red-text"> * </span>
+                                    </label>
+                                </div>
+                                <!-- category select  -->
+                                <div class="input-field col s12">
+                                    <select id="category">
+                                        <option v-for="(cat,index) in step1.categoryList.list"
+                                                :selected="cat.id == step1.categoryId"
+                                                :value="cat.id">{{cat.name}}
+                                        </option>
+                                    </select>
+                                    <label>Category <span class="cl-red-text"> * </span></label>
+                                </div>
+
+                                <div class="input-field col s12">
+                                    <select id="subCategory1" class="sub-category">
+                                        <option v-for="(cat,index) in step1.subCategoryList.list"
+                                                :selected="cat.id == step1.subCategoryId"
+                                                :value="cat.id">{{cat.name}}
+                                        </option>
+                                    </select>
+                                    <label>Subcategory<span class="cl-red-text"> * </span></label>
+                                </div>
+
+                                <div class="input-field col s12">
+                                    <select id="subCategory2" class="sub-category">
+                                        <option value="0">Choose second subcategory (optional) </option>
+                                        <option v-for="(cat,index) in step1.subCategoryList.list"
+                                                :selected="cat.id == step1.subCategoryId2"
+                                                :value="cat.id">{{cat.name}}
+                                        </option>
+                                    </select>
+                                    <label>Other subcategory</label>
+                                </div>
+
+                                <!-- business type -->
+                                <div class="input-field col s12">
+                                    <select id="businessType">
+                                        <option v-for="item in step1.businessTypeList.list"
+                                                :selected="item.id == step1.businessType"
+                                                :value = item.id>{{item.title}}
+                                        </option>
+                                    </select>
+                                    <label>Business type</label>
+                                </div>
+
+                                <div class="input-field col s12">
+                                    <input id="website" type="text" class="validate" v-model="step1.website">
+                                    <label for="website">Website</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="chainStore" type="text" class="validate" v-model="step1.chainStore ">
+                                    <label for="chainStore">Chain Store</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- STEP2 : ADDRESS -->
+                    <div class="col s12 m10 offset-m1 l6 offset-l3 add-page" v-show="curStep == 2">
+                        <form>
+                            <p class="grey-text">Map & address <span class="cl-red-text"> * </span></p>
+                            <!-- map -->
+                            <div class="row map-wrap">
+                                <div class="col s12">
+                                    <input id="pac-input" class="map-controls" type="text"
+                                           placeholder="Enter a location" required v-model="step2.fullAddress">
+                                    <div id="map" class="map"></div>
+                                </div>
+                            </div>
+
+                            <!-- address-text -->
+                            <div class="row address-wrap">
+                                <div class="input-field col s12 m6 l6">
+                                    <input id="street" placeholder="Street" type="text" v-model="step2.street">
+                                </div>
+                                <div class="input-field col s12 m6 l6">
+                                    <input id="suburb" placeholder="Suburb" type="text" v-model="step2.suburb">
+                                </div>
+                                <div class="input-field col s12 m6 l6">
+                                    <input id="state" placeholder="State" type="text" v-model="step2.state">
+                                </div>
+                                <div class="input-field col s12 m6 l6">
+                                    <input id="postcode" placeholder="Postcode" type="text" v-model="step2.postcode">
+                                </div>
+                                <input type="hidden" name="lat" id="lat" :value="step2.geo.lat">
+                                <input type="hidden" name="lng" id="lng" :value="step2.geo.lng">
+                            </div>
+
+                            <!-- openTime -->
+                            <div class="time-wrap">
+                                <p class="grey-text">Open time</p>
+                                <div class="row">
+                                    <div class="col s6">
+                                        <input type="checkbox" class="filled-in" id="appointmentOnly" v-model="isAppt"/>
+                                        <label for="appointmentOnly">Appointment only</label>
+                                    </div>
+                                    <div class="col s6 right-align time-apply-all">
+                                        <button type="button" id="applyAll" class="btn cl-red white-text"
+                                                title="Apply Monday's open time to all open days"
+                                                v-show="step2.time[0].isOpen"
+                                                @click="applyAll"
+                                                :disabled='isAppt'>apply all
+                                            <i class="material-icons right">help_outline</i></button>
+                                    </div>
+                                </div>
+
+                                <!-- TIME  -->
+                                <div class="time-picker-wrapper">
+                                    <div class="time-day-item" v-for="(day,index) in step2.time">
+                                        <div class="row">
+                                            <div class="col s4 m3 td-item-title">
+                                                <input type="checkbox" class="filled-in"
+                                                       :id="day.short"
+                                                       v-model="day.isOpen"
+                                                       :disabled="isAppt"/>
+                                                <label :for="day.short" class="time-day-choose">{{day.short}}</label>
+                                            </div>
+                                            <div class="col s4 m4 offset-m1">
+                                                <input type="text" class="time-picker-input"
+                                                       :disabled="!day.isOpen || isAppt"
+                                                       @click="timePick('open',index)"
+                                                       :value="day.open"/>
+                                            </div>
+                                            <div class="col s4 m4">
+                                                <input type="text" class="time-picker-input"
+                                                       :disabled="!day.isOpen || isAppt"
+                                                       @click="timePick('close',index)"
+                                                       :value="day.close"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div id="timePickerModal" class="modal time-picker-modal">
+                            <div class="modal-content">
+                                <div class="row time-picker">
+                                    <div class="col s8 center-align">
+                                        <h6 class="cl-red-text">Hour</h6>
+                                        <div class="hour-wrapper">
+                                            <button v-for="hour in 24"
+                                                    :class="['btn','btn-flat','btn-floating',
+                                                    {'active':step2.picker.hour == hour-1}]"
+                                                    @click="step2.picker.hour = hour-1"
+                                            >{{hour-1}}
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col s4 center-align">
+                                        <h6 class="cl-red-text">Minute</h6>
+                                        <div class="row center-align minute-wrapper">
+                                            <div class="col s12" v-for="min in ['00','30']">
+                                                <button :class="['btn','btn-flat','btn-floating',
+                                                    {'active':step2.picker.min == min}]"
+                                                        @click="step2.picker.min = min"
+                                                >{{min}}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<input type="hidden" id="time-picker-val" value="9:00">-->
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="javascript:void(0)" class="modal-action cl-red-text btn-flat"
+                                   @click="timeConfirm">OK</a>
+                                <a href="javascript:void(0)" class="modal-action modal-close btn-flat">cancel</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP3 : ABOUT US -->
+                    <div class="col s12 m10 offset-m1 l6 offset-l3 add-page" v-show="curStep == 3">
+                        <form>
+                            <div class="row">
+                                <!-- logo upload-->
+                                <div class="input-field col s12">
+                                    <p class="as-add-title">
+                                        <span class="left">Logo </span>
+                                        <i class="material-icons grey-text text-lighten-1 as-img-tips" title="Maximum size of 1MB jpg, png, gif">error</i>
+                                    </p>
+                                    <!--<button class="btn cl-red">upload</button>-->
+                                    <div v-show="step3.logo.id == ''">
+                                        <div v-img-upload:logo :id="'logo-upload'"></div>
+                                    </div>
+                                    <img-upload :src="step3.logo.src"
+                                                :type="'logo'"
+                                                v-show="step3.logo.src !=''"
+                                                :id="step3.logo.id"></img-upload>
+                                </div>
+
+                                <!-- images upload-->
+                                <div class="input-field col s12">
+                                    <p class="as-add-title">
+                                        <span class="left">Store Images </span>
+                                        <i class="material-icons grey-text text-lighten-1 as-img-tips" title="Maximum size of 1MB jpg, png, gif">error</i>
+                                        <span class="right teal-text text-lighten-2">{{step3.imgs.length}} / {{step3.imgsLimit}}</span>
+                                    </p>
+                                    <div v-show="step3.imgs.length < step3.imgsLimit">
+                                        <div v-img-upload:store :id="'store-upload'"></div>
+                                    </div>
+                                    <img-upload :src="img.src"
+                                                v-for="(img,index) of step3.imgs"
+                                                :type="'store'"
+                                                :index="index"
+                                                :id="img.id"></img-upload>
+                                </div>
+
+                                <div class="input-field col s12">
+                                    <input id="slogan" type="text" class="validate" v-model="step3.slogan">
+                                    <label for="slogan">Slogan</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <textarea id="aboutUs" class="materialize-textarea"
+                                              v-model="step3.about"></textarea>
+                                    <label for="aboutUs">About Us</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <p class="as-add-title">Our Services</p>
+                                    <add-list :list="step3.services"></add-list>
+                                </div>
+                                <div class="input-field col s12">
+                                    <p class="as-add-title">Our Service Areas</p>
+                                    <add-list :list="step3.serviceAreas"></add-list>
+                                </div>
+                                <div class="input-field col s12">
+                                    <p class="as-add-title">Our Products</p>
+                                    <add-list :list="step3.products"></add-list>
+                                </div>
+                                <div class="input-field col s12">
+                                    <p class="as-add-title">Our Specialist</p>
+                                    <add-list :list="step3.specialist"></add-list>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- STEP4 : CONTACT-->
+                    <div class="col s12 m10 offset-m1 l6 offset-l3 add-page" v-show="curStep == 4">
+                        <form>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="facebook" type="text" v-model="step4.facebook">
+                                    <label for="facebook">Facebook</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="twitter" type="text" v-model="step4.twitter">
+                                    <label for="twitter">Twitter</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="instagram" type="text" v-model="step4.instagram">
+                                    <label for="instagram">Instagram</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="google" type="text" v-model="step4.google">
+                                    <label for="google">Google+</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="linkedin" type="text" v-model="step4.linkedin">
+                                    <label for="linkedin">Linkedin</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="pinterest" type="text" v-model="step4.pinterest">
+                                    <label for="pinterest">Pinterest</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="fax" type="text" v-model="step4.fax">
+                                    <label for="fax">Fax</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- STEP5 : DONE -->
+                    <div class="col s12 m10 offset-m1 l6 offset-l3 add-page" v-show="curStep == 5">
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <div class="as-finish-bg"></div>
+                                <p class="as-finish-title cl-red-text">Congratulations!</p>
+                                <p class="as-finish-text">Your listings request has been sent successfully. And your request need to be approved by administrator. Once your request has been confirmed we will send an email to inform you.</p>
+                                <div class="as-finish-link">
+                                    <a href="javascript:void(0)" class="btn waves-effect blue lighten-2" onclick="location.reload();">edit again</a>
+                                    <a href="#" target="_blank" class="btn waves-effect orange lighten-2">preview</a>
+                                    <a href="#" class="btn waves-effect cl-red">finish</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP BOTTOM BUTTON -->
+                    <div class="col s12 m10 offset-m1 l5 offset-l4 add-bottom right-align">
+                        <button class="btn white-text grey lighten-1" style="display: none;"
+                                @click="stepHandler(-1)"
+                                v-show="curStep != 1 && curStep != 5">back
+                        </button>
+
+                        <button class="btn white-text cl-red"
+                                @click="stepHandler(+1)"
+                                v-show="curStep != 5">next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- step3 add list TEMP -->
+<script type="text/x-template" id="addListTemp">
+    <div class="as-add-group">
+        <ul class="as-add-list">
+            <li v-for="(item,index) in list">
+                <div class="as-add-item">
+                    <span class="truncate">{{item}}</span>
+                    <span class="as-add-del" @click="del(index)"><i
+                            class="material-icons white-text">close</i></span>
+                </div>
+            </li>
+        </ul>
+        <div class="as-add-bottom">
+            <input type="text" class="as-add-input" @keyup.enter="add" v-model="newTodo">
+            <button type="button" class="btn btn-floating btn-flat as-add-btn" @click.prevent="add"><i
+                    class="material-icons">add</i></button>
+        </div>
+    </div>
+</script>
+<!-- Step3 img TEMP -->
+<script type="text/x-template" id="imgTemp">
+    <div class="as-img-group">
+        <img :src="src" alt="" class="as-img">
+        <a class="btn-floating btn-flat as-img-menu">
+            <i class="material-icons" @click="menuToggle">more_vert</i>
+        </a>
+        <transition
+                name="custom-classes-transition"
+                enter-active-class="animated fadeIn"
+                leave-active-class="animated fadeOut">
+            <div class="as-img-edit" v-show="isActive">
+                <transition
+                        name="custom-classes-transition"
+                        enter-active-class="animated zoomIn"
+                        leave-active-class="animated zoomOut">
+                    <a v-show="isActive" class="btn-floating orange lighten-2 as-img-action"
+                       @click="replace">
+                        <i class="material-icons">autorenew</i>
+                    </a>
+                </transition>
+                <transition
+                        name="custom-classes-transition"
+                        enter-active-class="animated zoomIn"
+                        leave-active-class="animated zoomOut">
+                    <a v-show="isActive" class="btn-floating cl-red as-img-action"
+                       @click="del">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </transition>
+            </div>
+        </transition>
+    </div>
+</script>

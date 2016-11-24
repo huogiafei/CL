@@ -1,0 +1,54 @@
+{
+  "project":"yeep",
+  "buildDate":"2016-8-3",
+  "author": "Edward Huo",
+  "sftp":{
+    "host":"192.168.10.228",
+    "imgPath":"/home/kwan/yeep.com.au/src/public/feImages/",
+    "user":"root",
+    "pass":"testingVM!",
+    "port":"22"
+  },
+  "singlePage":[
+    "view/login.html",
+    "view/index.html"
+  ],
+  "css":{
+    "main":[
+      "css/materialize.min.css",
+      "css/animate.min.css",
+      "css/nprogress.css",
+      "css/uploadifive.css",
+      "css/common.css",
+      "css/login.css"
+    ]
+  },
+
+  "js":{
+    "common":[
+      "lib/jquery/jquery.min.js",
+      "lib/nprogress/nprogress.js",
+      "lib/md5/md5.js",
+      "lib/lightbox/lightbox.js",
+      "lib/uploadifive/jquery.uploadifive.js",
+      "lib/materialize-css/materialize.min.js",
+      "lib/vue/vue.min.js",
+      "js/common.js",
+      "js/login.js"
+
+    ],
+    "vendor":[
+      "js/entry.js",
+      "js/search_list.js",
+      "js/store.js",
+      "js/my_stores.js",
+      "js/add_store.js",
+      "js/claim.js",
+      "js/account_setting.js",
+      "js/contact.js",
+      "js/forget_password.js",
+      "js/reset_password.js"
+    ]
+  }
+
+}

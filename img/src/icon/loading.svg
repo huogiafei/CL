@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="waiting" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="100px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="border">
+	<circle fill="none" stroke="#E74C3C" stroke-width="20" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="70,70" cx="256" cy="256" r="200.4">
+		<animateTransform attributeName="transform"
+			attributeType="XML"
+				 type="rotate"
+				 from="0 256 256"
+				 to="360 256 256"
+				 dur="10s"
+				 repeatCount="indefinite"/>
+	</circle>
+</g>
+<circle id="circle" fill="#E74C3C" cx="257" cy="255" r="139"/>
+<g id="dot">
+	<circle fill="#F4F4F4" cx="174" cy="256" r="15">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="1s"
+						  begin=".1s"
+						  values="0,15;0,-15;0,15"
+                          repeatCount="indefinite"/>
+	</circle>
+	<circle fill="#F4F4F4" cx="229" cy="256" r="15">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="1s"
+						  begin=".2s"
+						  values="0,15;0,-15;0,15"
+                          repeatCount="indefinite"/>
+	</circle>
+	<circle fill="#F4F4F4" cx="283" cy="256" r="15">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="1s"
+						  begin=".3s"
+						  values="0,15;0,-15;0,15"
+                          repeatCount="indefinite"/>
+	</circle>
+	<circle fill="#F4F4F4" cx="336" cy="256" r="15">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="1s"
+						  begin=".4s"
+						  values="0,15;0,-15;0,15"
+                          repeatCount="indefinite"/>
+	</circle>
+</g>
+</svg>

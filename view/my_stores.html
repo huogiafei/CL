@@ -1,0 +1,105 @@
+<div class="container" id="myStoresApp">
+    <input type="hidden" id="pv" value="myStores">
+    <div class="row mb-title">
+        <div class="col s8 m6">
+            <h4 class="cl-title">My Business</h4>
+        </div>
+        <div class="col s4 m6 right-align mb-btn-wrap">
+            <a class="btn cl-red white-text" href="#/claim">ADD</a>
+        </div>
+    </div>
+
+    <!-- loading -->
+    <div class="cl-blank-loading" v-show="isLoading"></div>
+
+    <transition
+            name="custom-classes-transition"
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut">
+        <!-- store list -->
+        <div class="row mb-store-list" style="display: none;" v-show="!isLoading && stores.length > 0">
+            <div v-for="(store,index) in stores" class="col s12 m6 l6">
+                <div :class="['card', 'mb-store' ,store.status.message]">
+                    <h5 class="truncate mb-store-name white-text">{{store.storeName}}{{store.storeID}}</h5>
+                    <div class="mb-store-content">
+                        <ul class="mb-store-info">
+                            <li>
+                                <span class="mb-store-label grey-text">type</span>
+                                <span class="mb-store-value">{{store.type}}</span>
+                            </li>
+                            <li>
+                                <span class="mb-store-label grey-text">status</span>
+                                <span class="mb-store-value">{{store.status.message}}</span>
+                            </li>
+                            <li>
+                                <span class="mb-store-label grey-text">build time</span>
+                                <span class="mb-store-value">{{store.buildTime}}</span>
+                            </li>
+                            <li>
+                                <span class="mb-store-label grey-text">visited</span>
+                                <span class="mb-store-value">{{store.visited}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="click-to-toggle fixed-action-btn horizontal mb-store-menu"
+                         style="">
+                        <a class="btn-floating mb-store-edit">
+                            <i class="material-icons tiny">menu</i>
+                        </a>
+                        <ul>
+                            <!-- delete -->
+                            <li @click="storeDel(index)">
+                                <a class="btn-floating orange lighten-1 store-del">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                            </li>
+
+                            <!-- preview -->
+                            <li v-if="store.status.code != 3 && store.status.code != 4">
+                                <a class="btn-floating green lighten-1" href="{{store.link.preview}}">
+                                    <i class="material-icons">visibility</i>
+                                </a>
+                            </li>
+
+                            <!-- edit -->
+                            <li v-if="store.status.code != 4">
+                                <a class="btn-floating blue" href="{{store.link.edit}}">
+                                    <i class="material-icons">mode_edit</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </transition>
+
+
+    <transition
+            name="custom-classes-transition"
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut">
+        <!-- no store -->
+        <div class="mb-blank" style="display: none;" v-show="!isLoading && stores.length == 0">
+            <div class="mb-blank-img"></div>
+            <p class="mb-blank-title cl-red-text">Join Us Now!</p>
+            <p class="mb-blank-text">It's time to let the world know about your awesome business!</p>
+        </div>
+    </transition>
+
+    <!-- del confirm modal -->
+    <div id="storeDelModal" class="modal">
+        <div class="modal-content">
+            <h4 id="sdm-title">Delete {{curDelStore.name}}</h4>
+            <p class="mb-del-text1">Are your sure you want to remove this store?</p>
+            <p class="mb-del-text2">TIP: If you’re deleting an approved store, it will be removed from Yeep. Please make
+                sure if you want to delete it.</p>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class=" modal-action btn-flat small cl-red-text" id="confirmDel"
+               @click.prevent="storeDelConfirm">delete</a>
+            <a href="javascript:void(0)" class=" modal-action modal-close btn-flat small grey-text">cancel</a>
+        </div>
+    </div>
+</div>
+

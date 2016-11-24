@@ -1,0 +1,125 @@
+<!-- CONTACT US -->
+<div class="container" id="contactApp">
+    <input type="hidden" id="pv" value="contact">
+    <div class="row contact">
+        <h4 class="cl-title col s12">Contact us</h4>
+        <!-- contact main -->
+        <div class="col s12 l8 ">
+            <form class="card contact-main no-margin-top" id="contactForm" @keyup.enter.stop="sendHandler">
+                <div class="row no-margin-bottom contact-main-content">
+                    <!-- topic -->
+                    <div class="input-field col s12 m6 l6">
+                        <select id="topic">
+                            <option value="0" disabled selected>Choose your option</option>
+                            <option value="1">Merchant assistance</option>
+                            <option value="2">Outdated store information</option>
+                            <option value="3">Advertising</option>
+                            <option value="4">Website bug</option>
+                            <option value="5">Cooperation</option>
+                        </select>
+                        <label>Topic</label>
+                    </div>
+
+                    <!-- basic info 1 -->
+                    <div class="input-field col s12">
+                        <input id="fullName" type="text" class="validate" required
+                               v-model="fullName"
+                               @keyup="checkNull">
+                        <label for="fullName" data-error="Please enter your full name.">
+                            Full name<span class="cl-red-text"> * </span></label>
+
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate" required
+                               v-model="email"
+                               @keyup="checkNull" >
+                        <label for="email" data-error="Please enter your email.">Email
+                            <span class="cl-red-text"> * </span></label>
+                    </div>
+
+                    <!-- store assistance -->
+                    <div class="contact-option-part" v-show="curTopicType == 1 || curTopicType == 2"
+                         style="display: none;">
+                        <div class="input-field col s12">
+                            <input id="storeName" type="text" class="validate" v-model="storeName">
+                            <label for="storeName">Store name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="storeSuburb" type="text" class="validate" v-model="storeSuburb">
+                            <label for="storeSuburb">Suburb</label>
+                        </div>
+                    </div>
+
+                    <!-- advertising -->
+                    <div class="contact-option-part" v-show="curTopicType == 3" style="display: none;"></div>
+
+                    <!-- website bug -->
+                    <div class="contact-option-part" v-show="curTopicType == 4" style="display: none;">
+                        <div class="input-field col s12">
+                            <input id="system" type="text" class="validate" v-model="os">
+                            <label for="system">Operating system</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="bug" type="text" class="validate" v-model="browser">
+                            <label for="bug">Browser</label>
+                        </div>
+                    </div>
+
+                    <!-- cooperation -->
+                    <div class="contact-option-part" v-show="curTopicType == 5" style="display: none;">
+                        <div class="input-field col s12">
+                            <input id="companyName" type="text" class="validate" v-model="partnerName">
+                            <label for="companyName">Company name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="companyTel" type="text" class="validate" v-model="partnerTel">
+                            <label for="companyTel">Company tel</label>
+                        </div>
+                    </div>
+
+                    <!-- basic info 2 -->
+                    <div class="input-field col s12">
+                        <input id="subject" type="text" class="validate" v-model="subject" required
+                               @keyup="checkNull">
+                        <label for="subject" data-error="Please enter a subject.">Subject
+                            <span class="cl-red-text"> * </span></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="message" class="materialize-textarea"
+                                  @keyup.enter.stop = 'return 0'
+                                  v-model="message" @keyup="checkNull" required></textarea>
+                        <label for="message" data-error="">Message
+                            <span class="cl-red-text"> * </span></label>
+                    </div>
+                    <div class="input-field col s12 right-align">
+                        <a href="#" class="btn cl-red white-text" @click.prevent="sendHandler">save</a>
+                    </div>
+                </div>
+                <div class="contact-success">
+                    <div class="contact-success-img"></div>
+                    <p class="contact-success-title cl-red-text">Thank you for contacting Yeep</p>
+                    <p class="contact-success-text">We have received your email and our Customer Service team will be responding to you soon.</p>
+                </div>
+            </form>
+        </div>
+
+        <!-- our info -->
+        <div class="col s12 l4">
+            <div class="contact-map" id="contactMap"></div>
+            <div class="contact-info">
+                <p class="contact-info-title"><i class="material-icons ">place</i>Address</p>
+                <p class="contact-info-text">PO BOX 1016</p>
+                <p class="contact-info-text">Springvale, VIC 3171</p>
+            </div>
+            <div class="contact-info">
+                <p class="contact-info-title"><i class="material-icons ">phone</i>Tel</p>
+                <p class="contact-info-text">12312312</p>
+            </div>
+            <div class="contact-info">
+                <p class="contact-info-title"><i class="material-icons ">email</i>Email</p>
+                <p class="contact-info-text">123@yeep.com.au</p>
+            </div>
+        </div>
+    </div>
+
+</div>

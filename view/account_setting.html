@@ -1,0 +1,84 @@
+<!-- ACCOUNT SETTING -->
+<div class="container" id="accountApp">
+    <input type="hidden" id="pv" value="accountSetting">
+    <div class="row mb-title">
+        <div class="col s12">
+            <h4 class="cl-title page-title">Account Setting</h4>
+        </div>
+    </div>
+    <div class="row">
+        <!-- profile -->
+        <div class="col s12 m6">
+            <!-- Edit Profile => ep -->
+            <div class="card no-margin-top ">
+                <h4 class="cl-red white-text ep-title"><i class="left material-icons">account_circle</i> Profile</h4>
+                <div class="row section">
+                    <div class="col s10 offset-s1 m8 offset-m2">
+                        <div class="ep-upload">
+                            <img src alt="" class="ep-head">
+                            <div id="upload"></div>
+                        </div>
+                        <form>
+                            <div class="row">
+                                <div class="input-field col s12" >
+                                    <input id="userFullName" type="text" class="validate" required
+                                           v-model="profile.fullName"
+                                           @keyup="checkNull">
+                                    <label for="userFullName" data-error="Please enter your full name.">FullName</label>
+                                </div>
+                                <div class="input-field col s12" >
+                                    <input id="userPhone" type="tel" class="validate" required
+                                           v-model="profile.phone"
+                                           @keyup="checkNull">
+                                    <label for="userPhone" data-error="Please enter your phone.">Phone</label>
+                                </div>
+                                <div class="col s12 right-align ep-bottom">
+                                    <a href="#" class="btn cl-red white-text"
+                                       @click.prevent="profileChange">save</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- change password -->
+        <div class="col s12 m6">
+            <div class="card no-margin-top">
+                <h4 class="cl-red white-text ep-title"><i class="left material-icons">lock_outline</i>Change Password</h4>
+                <div class="row section">
+                    <div class="col s10 offset-s1 m8 offset-m2">
+                        <form id="passwordForm">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="oldPwd" type="password" class="validate" v-model="cp.old" required
+                                           @keyup="checkNull"
+                                           @blur="checkOld">
+                                    <label for="oldPwd" data-error="enter current password.">Old Password</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="newPwd" type="password" class="validate"
+                                           maxlength="12" minlength="6" required
+                                           v-model="cp.new" @keyup="checkNull">
+                                    <label for="newPwd" data-error="enter a new password (6-12 characters)">New Password</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="newPwd2" type="password" class="validate"
+                                           maxlength="12" minlength="6" required
+                                           v-model="cp.new2"
+                                           @keyup="confirmPwd">
+                                    <label for="newPwd2" data-error="confirm your new password (6-12 characters)">Confirm Password</label>
+                                </div>
+                                <div class="col s12 right-align ep-bottom">
+                                    <a href="#" class="btn cl-red white-text"
+                                       @click.prevent="passwordChange">save</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

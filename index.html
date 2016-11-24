@@ -1,0 +1,798 @@
+<!--
+
+            $$$$$$$$$$$$$$$$$$
+          $$$$$$$$$$$$$$$$$$$$$$
+        $$$$                  $$$$$
+      $$$$                      $$$$
+     $$$$                        $$$$
+    $$$$                          $$$$
+  $$$$           $$$$$$$$          $$$$
+ $$$$$$        $$$     $$$        $$$$$$
+   $$$$$      $$$  $$$  $$$      $$$$$
+     $$$     $$$   $$$   $$$     $$$
+     $$$      $$$       $$$      $$$
+     $$$       $$$$   $$$$       $$$
+     $$$         $$$$$$$         $$$
+     $$$           $$$           $$$
+     $$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$
+      $$$$$$$$$$$$$   $$$$$$$$$$$$$
+
+           design by yeep team
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no ">
+    <!-- build:css -->
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/nprogress.css">
+    <link rel="stylesheet" href="css/uploadifive.css">
+    <link rel="stylesheet" href="css/common.css">
+    <!-- endbuild -->
+    <title>yeep</title>
+</head>
+<body>
+<!--<div id="headerTmp"></div>-->
+<header class="head" id="header">
+    <div class="head-content container hide-on-small-only row ">
+        <!--------- Desktop & Tablet ---------->
+        <!-- logo -->
+        <div class="col m3 head-logo no-padding">
+            <a href="#/home">
+                <svg id="logo">
+                    <use xlink:href="#icon-logo"></use>
+                </svg>
+            </a>
+        </div>
+
+        <!-- search box -->
+        <div class="col m6 head-search-box">
+            <form class="row head-search-form ">
+                <div class="col m10 head-search-main">
+                    <div class="head-search-item what">
+                        <input placeholder="bar, pet shop, hotel" id="what" type="text"
+                               class="head-search-input auto-what"
+                               data-type="what">
+                        <span class="head-search-clear search-clear"><i class="material-icons">close</i></span>
+                    </div>
+                    <span class="head-search-place"><i class="material-icons">place</i></span>
+                    <div class="head-search-item where">
+                        <input placeholder="Where" id="where" type="text" class="head-search-input auto-where"
+                               data-type="where">
+                        <span class="head-search-clear search-clear"><i class="material-icons">close</i></span>
+                    </div>
+                </div>
+
+                <div class="col m1">
+                    <button class="btn head-search-btn cl-red"><i class="material-icons">search</i></button>
+                </div>
+            </form>
+        </div>
+
+        <!-- login btn  -->
+        <div class="col m3 no-padding">
+            <div class="right head-login-btn ">
+                <a id="loginBtn" class=" btn cl-red modal-login-trigger" href="#loginModal">mybusiness</a>
+            </div>
+            <div class="right head-access hide">
+                <img class="head-access-head" src="http://img.yeep.com.au/icon/default_avatar.png" alt="">
+                <div class="card ha-wrapper">
+                    <h4 class="cl-red-text ha-name">Hello,Allen</h4>
+                    <div class="collection">
+                        <a href="#/my_stores" class="collection-item blue-text">my business</a>
+                        <a href="#/account_setting" class="collection-item blue-text">account setting</a>
+                    </div>
+                    <div class="right-align ha-logout"><a href="!#" class="grey-text text-darken-1">log out</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- mobile only -->
+    <div class="mobile-nav hide-on-med-and-up">
+        <a href="#" data-activates="slide-out" class="left left-align head-mobile-btn white-text button-collapse"><i
+                class="material-icons">more_vert</i></a>
+        <a class="right right-align head-mobile-btn white-text modal-search-trigger" href="#hsmModal"><i
+                class="material-icons">search</i></a>
+        <div class="head-logo-m center">
+            <a href="#/home">
+                <svg>
+                    <use xlink:href="#icon-logo-m"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- logo svg place -->
+    <div style="height: 0; width: 0;">
+        <svg style="height: 0; width: 0;">
+            <!-- logo -->
+            <symbol id="icon-logo" viewBox="0 0 320 100">
+                <path fill="none" stroke="#E74C3C" stroke-width="6" stroke-miterlimit="10"
+                      d="M48 93.392H12v-45l-9-9L29.532 3h54.43L111 39.392l-9 7.595v46.405H66s-27-18-27-36 18-18 18-18 18 0 18 18-27 36-27 36z"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <ellipse cx="56.544" cy="56.535" fill="#E74C3C" rx="8.544" ry="8.142"/>
+                <path fill="#E74C3C"
+                      d="M147.393 73.37l-15-36.016c-.234-.442-.352-.924-.352-1.445 0-.859.306-1.595.918-2.207.611-.611 1.348-.918 2.207-.918s1.602.3 2.227.898c.338.365.586.756.742 1.172l12.656 30.352 12.656-30.352c.156-.416.416-.807.781-1.172.599-.599 1.328-.898 2.188-.898s1.595.307 2.207.918c.611.612.918 1.348.918 2.207 0 .521-.117 1.003-.352 1.445l-23.281 55.859c-.156.416-.404.794-.742 1.133-.625.625-1.367.938-2.227.938s-1.596-.307-2.207-.918c-.612-.612-.918-1.348-.918-2.207 0-.521.117-1.003.352-1.445l7.227-17.344zm62.305-7.461c.859 0 1.595.307 2.207.918.611.612.918 1.348.918 2.207s-.3 1.602-.898 2.227c-4.037 3.516-8.789 5.273-14.258 5.273-6.042 0-11.198-2.135-15.469-6.406-4.271-4.271-6.406-9.427-6.406-15.469 0-6.041 2.135-11.197 6.406-15.469 4.271-4.271 9.427-6.406 15.469-6.406 6.041 0 11.197 2.136 15.469 6.406 4.271 4.271 6.406 9.428 6.406 15.469 0 .859-.307 1.596-.918 2.207-.612.612-1.348.918-2.207.918h-34.102c.572 2.995 2.005 5.639 4.297 7.93 3.047 3.047 6.731 4.57 11.055 4.57 3.906 0 7.266-1.236 10.078-3.711.572-.442 1.223-.664 1.953-.664zm3.32-14.375c-.573-2.994-2.006-5.638-4.297-7.93-3.047-3.047-6.732-4.57-11.055-4.57-4.323 0-8.008 1.523-11.055 4.57-2.292 2.292-3.725 4.936-4.297 7.93h30.704zm46.68 14.375c.859 0 1.595.307 2.207.918.611.612.918 1.348.918 2.207s-.3 1.602-.898 2.227c-4.037 3.516-8.789 5.273-14.258 5.273-6.042 0-11.198-2.135-15.469-6.406-4.271-4.271-6.406-9.427-6.406-15.469 0-6.041 2.135-11.197 6.406-15.469 4.271-4.271 9.427-6.406 15.469-6.406 6.041 0 11.197 2.136 15.469 6.406 4.271 4.271 6.406 9.428 6.406 15.469 0 .859-.307 1.596-.918 2.207-.612.612-1.348.918-2.207.918h-34.102c.572 2.995 2.005 5.639 4.297 7.93 3.047 3.047 6.731 4.57 11.055 4.57 3.906 0 7.266-1.236 10.078-3.711.572-.442 1.223-.664 1.953-.664zm3.32-14.375c-.573-2.994-2.006-5.638-4.297-7.93-3.047-3.047-6.732-4.57-11.055-4.57-4.323 0-8.008 1.523-11.055 4.57-2.292 2.292-3.725 4.936-4.297 7.93h30.704zm19.024 40.625c0 .859-.307 1.595-.918 2.207-.612.611-1.348.918-2.207.918s-1.596-.307-2.207-.918c-.612-.612-.918-1.348-.918-2.207v-37.5c0-6.041 2.135-11.197 6.406-15.469 4.271-4.271 9.427-6.406 15.469-6.406 6.041 0 11.197 2.136 15.469 6.406 4.271 4.271 6.406 9.428 6.406 15.469 0 6.042-2.136 11.198-6.406 15.469-4.271 4.271-9.428 6.406-15.469 6.406-6.042 0-11.198-2.135-15.469-6.406-.053-.052-.104-.104-.156-.156v22.187zm0-37.5c0 4.323 1.523 8.008 4.57 11.055 3.047 3.047 6.731 4.57 11.055 4.57 4.322 0 8.008-1.523 11.055-4.57 3.047-3.047 4.57-6.731 4.57-11.055 0-4.322-1.523-8.008-4.57-11.055s-6.732-4.57-11.055-4.57c-4.323 0-8.008 1.523-11.055 4.57s-4.57 6.733-4.57 11.055z"/>
+            </symbol>
+            <!-- logo mobile -->
+            <symbol id="icon-logo-m" viewBox="0 0 40 40">
+                <title>mobile logo</title>
+                <path fill="none" stroke="#fff" stroke-width="1.9919" stroke-miterlimit="10" stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.935 31.004h-11.951v-14.939l-2.988-2.988 8.808-12.081h18.070l8.976 12.081-2.988 2.521v15.405h-11.951c0 0-8.963-5.976-8.963-11.951s5.976-5.976 5.976-5.976 5.976 0 5.976 5.976-8.963 11.951-8.963 11.951z"></path>
+                <path fill="#fff"
+                      d="M21.608 18.768c0 1.493-1.27 2.703-2.836 2.703s-2.836-1.21-2.836-2.703c0-1.493 1.27-2.703 2.836-2.703s2.836 1.21 2.836 2.703z"></path>
+            </symbol>
+            <!-- only logo -->
+            <symbol id="icon-logo-only" viewBox="0 0 120 100">
+                <path fill="none" stroke="#E74C3C" stroke-width="6" stroke-miterlimit="10"
+                      d="M48 93.392H12v-45l-9-9L29.532 3h54.43L111 39.392l-9 7.595v46.405H66s-27-18-27-36 18-18 18-18 18 0 18 18-27 36-27 36z"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <ellipse cx="56.544" cy="56.535" fill="#E74C3C" rx="8.544" ry="8.142"/>
+            </symbol>
+        </svg>
+    </div>
+</header>
+<!-- **CONTENT START** -->
+<main id="mainTmp">
+    <!-- Home -->
+    <div class="home-banner-wrap">
+        <h1 class="home-slogan">Explore What's Around You</h1>
+        <h2 class="cl-title home-slogan-desc">Find local takeaway, golf courses or beauty salons</h2>
+        <div class="row home-banner-search">
+            <form>
+                <div class="row no-margin-bottom">
+                    <div class="input-field col s12 m5 l5 banner-what">
+                        <input id="bannerWhat" type="text" placeholder="bar, pet shop, hotel" class="auto-what"
+                               data-type="what"/>
+                        <span class="banner-search-clear search-clear"><i class="material-icons">close</i></span>
+                    </div>
+                    <div class="input-field col s12 m5 l5 banner-where">
+                        <input id="bannerWhere" type="text" placeholder="where" class="auto-where" data-type="where"/>
+                        <span class="banner-search-clear search-clear"><i class="material-icons">close</i></span>
+                    </div>
+                    <div class="col s12 m2 l2 center-align no-padding">
+                        <button class="banner-search-submit"><i class="material-icons">search</i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container home-main">
+        <!-- Banner -->
+
+        <!-- Category -->
+        <div class="row no-margin-bottom">
+            <h2 class="col s12 cl-title home-title">Popular</h2>
+            <ul class="col s12 category-tabs">
+                <li class="cat-tab active">Exercise</li>
+                <li class="cat-tab">Financial Services</li>
+                <li class="cat-tab">Pet</li>
+                <li class="cat-tab">Automotive</li>
+                <li class="cat-tab">Travel</li>
+                <li class="cat-tab">Restaurants</li>
+            </ul>
+            <div class="col-12">
+
+                <!-- exercise -->
+                <div class="category-content active" id="exercise">
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=gym">
+                                <img src="http://img.yeep.com.au/banner/exercise/24_hour_gym.jpg"
+                                     class="card-image cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>Gym</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Fishing Equipment">
+                                <img src="http://img.yeep.com.au/banner/exercise/fishing_equipment.jpg"
+                                     class="card-image cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>Fishing</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Golf Equipment">
+                                <img src="http://img.yeep.com.au/banner/exercise/golf_equipment.jpg" class="cat-img"
+                                     alt="">
+                                <h3 class="cat-item-name cl-title"><span>Golf</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Weight Loss">
+                                <img src="http://img.yeep.com.au/banner/exercise/weight_loss.jpg" class="cat-img"
+                                     alt="">
+                                <h3 class="cat-item-name cl-title"><span>Lose Weight</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- financial -->
+                <div class="category-content" id="financial">
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Bank">
+                                <img src="http://img.yeep.com.au/banner/financial/bank.jpg" class="card-image cat-img"
+                                     alt="">
+                                <h3 class="cat-item-name cl-title"><span>bank</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Business Loans & Finance">
+                                <img src="http://img.yeep.com.au/banner/financial/business_loans.jpg"
+                                     class="card-image cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>business loans</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Currency Exchange">
+                                <img src="http://img.yeep.com.au/banner/financial/currency_exchange.jpg" class="cat-img"
+                                     alt="">
+                                <h3 class="cat-item-name cl-title"><span>currency exchange</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Personal Loans & Finance">
+                                <img src="http://img.yeep.com.au/banner/financial/personal_loan_&_finance.jpg"
+                                     class="cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>personal_loan</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- pet -->
+                <div class="category-content" id="pet">
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Animal Training">
+                                <img src="http://img.yeep.com.au/banner/pet/animal_training.jpg"
+                                     class="card-image cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>animal training</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Pet Shop">
+                                <img src="http://img.yeep.com.au/banner/pet/pet_grooming_&_washing.jpg"
+                                     class="card-image cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>pet grooming</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Pet Grooming & Washing">
+                                <img src="http://img.yeep.com.au/banner/pet/pet_shop.jpg" class="cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>pet shop</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Pet Supplies & Accessories">
+                                <img src="http://img.yeep.com.au/banner/pet/pet_supplies_&_accessories.jpg"
+                                     class="cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>pet supplies</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- automotive -->
+                <div class="category-content" id="automotive">
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Car Auctions">
+                                <img src="http://img.yeep.com.au/banner/automotive/car_auctions.jpg"
+                                     class="card-image cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>Car Auctions</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Car Rentall">
+                                <img src="http://img.yeep.com.au/banner/automotive/car_rentall.jpg"
+                                     class="card-image cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>Car Rentall</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Pettol Station">
+                                <img src="http://img.yeep.com.au/banner/automotive/petrol_station.jpg" class="cat-img"
+                                     alt="">
+                                <h3 class="cat-item-name cl-title"><span>Pettol Station</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Taxi Service">
+                                <img src="http://img.yeep.com.au/banner/automotive/taxi_service.jpg" class="cat-img"
+                                     alt="">
+                                <h3 class="cat-item-name cl-title"><span>Taxi Service</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- travel -->
+                <div class="category-content" id="travel">
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Breakfast">
+                                <img src="http://img.yeep.com.au/banner/travel/bed_&_breakfast.jpg"
+                                     class="card-image cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>Breakfast</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Holiday House">
+                                <img src="http://img.yeep.com.au/banner/travel/holiday_house.jpg"
+                                     class="card-image cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>Holiday House</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Hotel">
+                                <img src="http://img.yeep.com.au/banner/travel/hotel.jpg" class="cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>Hotel</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Motel">
+                                <img src="http://img.yeep.com.au/banner/travel/motel.jpg" class="cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>Motel</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- restaurant -->
+                <div class="category-content" id="restaurants">
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Bar">
+                                <img src="http://img.yeep.com.au/banner/restaurants/bar.jpg" class="card-image cat-img"
+                                     alt="">
+                                <h3 class="cat-item-name cl-title"><span>Bar</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Cafe">
+                                <img src="http://img.yeep.com.au/banner/restaurants/cafe.jpg" class="card-image cat-img"
+                                     alt="">
+                                <h3 class="cat-item-name cl-title"><span>Cafe</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Club">
+                                <img src="http://img.yeep.com.au/banner/restaurants/club.jpg" class="cat-img" alt="">
+                                <h3 class="cat-item-name cl-title"><span>Club</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l3">
+                        <div class="cat-item z-depth-1">
+                            <a href="/search?what=Juice Bar">
+                                <img src="http://img.yeep.com.au/banner/restaurants/juice_bar.jpg" class="cat-img"
+                                     alt="">
+                                <h3 class="cat-item-name cl-title"><span>Juice Bar</span></h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Listing -->
+        <div class="row">
+            <h2 class="col s12 cl-title home-title">New Listing</h2>
+            <div class="col s6 m6 l3">
+                <a href="#/store">
+                    <div class="card-panel">
+                        <p class="nl-store-name">Sporty’s Warehouse</p>
+                        <p class="nl-store-slogan">Australia's Largest Sports Store</p>
+                        <p class="nl-store-address">1/64–66 Ourimbah Rd Tweed Heads, NSW 2485</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col s6 m6 l3">
+                <a href="#">
+                    <div class="card-panel">
+                        <p class="nl-store-name">Sporty’s Warehouse</p>
+                        <p class="nl-store-slogan">Australia's Largest Sports Store</p>
+                        <p class="nl-store-address">1/64–66 Ourimbah Rd Tweed Heads, NSW 2485</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col s6 m6 l3">
+                <a href="#">
+                    <div class="card-panel">
+                        <p class="nl-store-name">Sporty’s Warehouse</p>
+                        <p class="nl-store-slogan">Australia's Largest Sports Store</p>
+                        <p class="nl-store-address">1/64–66 Ourimbah Rd Tweed Heads, NSW 2485</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col s6 m6 l3">
+                <a href="#">
+                    <div class="card-panel">
+                        <p class="nl-store-name">Sporty’s Warehouse</p>
+                        <p class="nl-store-slogan">Australia's Largest Sports Store</p>
+                        <p class="nl-store-address">1/64–66 Ourimbah Rd Tweed Heads, NSW 2485</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Category -->
+        <div class="row hide-on-small-only">
+            <h2 class="col s12 cl-title home-title">Category</h2>
+            <div class="col s6 m6 l3">
+                <ul class="home-list">
+                    <li><a href="#">Automotive</a></li>
+                    <li><a href="#">Business Services</a></li>
+                    <li><a href="#">Clothing & Accessories</a></li>
+                    <li><a href="#">Education & Tutoring</a></li>
+                    <li><a href="#">Fresh Food & Drinks</a></li>
+                    <li><a href="#">Health & Beauty</a></li>
+                </ul>
+            </div>
+            <div class="col s6 m6 l3">
+                <ul class="home-list">
+                    <li><a href="#">Automotive</a></li>
+                    <li><a href="#">Business Services</a></li>
+                    <li><a href="#">Clothing & Accessories</a></li>
+                    <li><a href="#">Education & Tutoring</a></li>
+                    <li><a href="#">Fresh Food & Drinks</a></li>
+                    <li><a href="#">Health & Beauty</a></li>
+                </ul>
+            </div>
+            <div class="col s6 m6 l3">
+                <ul class="home-list">
+                    <li><a href="#">Automotive</a></li>
+                    <li><a href="#">Business Services</a></li>
+                    <li><a href="#">Clothing & Accessories</a></li>
+                    <li><a href="#">Education & Tutoring</a></li>
+                    <li><a href="#">Fresh Food & Drinks</a></li>
+                    <li><a href="#">Health & Beauty</a></li>
+                </ul>
+            </div>
+            <div class="col s6 m6 l3">
+                <ul class="home-list">
+                    <li><a href="#">Automotive</a></li>
+                    <li><a href="#">Business Services</a></li>
+                    <li><a href="#">Clothing & Accessories</a></li>
+                    <li><a href="#">Education & Tutoring</a></li>
+                    <li><a href="#">Fresh Food & Drinks</a></li>
+                    <li><a href="#">Health & Beauty</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Region -->
+        <div class="row hide-on-small-only">
+            <h2 class="col s12 cl-title home-title">Region</h2>
+            <div class="col s6 m6 l3">
+                <ul class="home-list">
+                    <li><a href="#">Alice Springs</a></li>
+                    <li><a href="#">Blue Mountains</a></li>
+                    <li><a href="#">Brisbane City</a></li>
+                    <li><a href="#">Bundaberg & Wide Bay</a></li>
+                    <li><a href="#">Canterbury/Bankstown</a></li>
+                    <li><a href="#">Central Tablelands</a></li>
+                </ul>
+            </div>
+            <div class="col s6 m6 l3">
+                <ul class="home-list">
+                    <li><a href="#">Alice Springs</a></li>
+                    <li><a href="#">Blue Mountains</a></li>
+                    <li><a href="#">Brisbane City</a></li>
+                    <li><a href="#">Bundaberg & Wide Bay</a></li>
+                    <li><a href="#">Canterbury/Bankstown</a></li>
+                    <li><a href="#">Central Tablelands</a></li>
+                </ul>
+            </div>
+            <div class="col s6 m6 l3">
+                <ul class="home-list">
+                    <li><a href="#">Alice Springs</a></li>
+                    <li><a href="#">Blue Mountains</a></li>
+                    <li><a href="#">Brisbane City</a></li>
+                    <li><a href="#">Bundaberg & Wide Bay</a></li>
+                    <li><a href="#">Canterbury/Bankstown</a></li>
+                    <li><a href="#">Central Tablelands</a></li>
+                </ul>
+            </div>
+            <div class="col s6 m6 l3">
+                <ul class="home-list">
+                    <li><a href="#">Alice Springs</a></li>
+                    <li><a href="#">Blue Mountains</a></li>
+                    <li><a href="#">Brisbane City</a></li>
+                    <li><a href="#">Bundaberg & Wide Bay</a></li>
+                    <li><a href="#">Canterbury/Bankstown</a></li>
+                    <li><a href="#">Central Tablelands</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Our Story -->
+        <div class="row story">
+            <h2 class="col s12 story-title">The yeep story</h2>
+            <div class="col s12 m12 l4">
+                <h3 class="cl-title story-subtitle">What We Do</h3>
+                <p class="story-text">At yeep, you can find great local businesses like gyms, financial services, pet
+                    stores, travel agencies and restaurants. We're here to support Australian local business and the
+                    communities they support. We connect local consumers with retailers and service providers.</p>
+            </div>
+            <div class="col s12 m12 l4">
+                <h3 class="cl-title story-subtitle">Our Team</h3>
+                <p class="story-text">Yeep team are a passionate bunch. We're dreamers. And we believe that anything is
+                    possible (ok, most anything). Most importantly, we has a world-class engineering team that makes it
+                    easier to connect people with great local businesses.</p>
+            </div>
+            <div class="col s12 m12 l4">
+                <h3 class="cl-title story-subtitle">Our Future</h3>
+                <p class="story-text">We’re dedicated in providing you the perfect way to find out the best local
+                    services in Australia. With the review function in the future, anyone can add credibility to any
+                    offering. Hence, we can keep you from having a bad experience as well as help you identify new
+                    experiences.</p>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- **CONTENT END** -->
+<!--<div id="footerTmp"></div>-->
+<footer class="foot">
+    <div class="row container footer-main">
+        <!-- breadcrumbs -->
+        <div class="col s12 no-padding breadcrumb-wrap">
+            <a href="#/" class="breadcrumb-home">
+                <svg>
+                    <use xlink:href="#icon-logo-only"></use>
+                </svg>
+            </a>
+            <ol vocab="http://schema.org/" typeof="BreadcrumbList" class="cl-breadcrumb">
+                <li property="itemListElement" typeof="ListItem">
+                    <a property="item" typeof="WebPage" href="#/">
+                        <span property="name">Category</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                <li property="itemListElement" typeof="ListItem">
+                    <a property="item" typeof="WebPage" href="#/">
+                        <span property="name">Automotive</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                <li property="itemListElement" typeof="ListItem">
+                    <span property="name">TV</span>
+                    <meta property="position" content="3">
+                </li>
+            </ol>
+        </div>
+
+        <!-- footer-main -->
+        <div class="col s12 m7 l6 no-padding footer-links">
+            <a href="#/about">about us</a>
+            <a href="#/contact">contact us</a>
+            <a href="#/browser_by_other">browse by other</a>
+            <a href="#/stores">stores</a>
+        </div>
+        <div class="col s12 m5 l6 no-padding footer-social right-align">
+            <a href="https://www.facebook.com/artofwhere" target="_blank" title="Facebook page"><svg><use xlink:href="#icon-facebook2"></use></svg></a>
+            <a href="https://twitter.com/artofwhereteam" target="_blank" title="Twitter profile"><svg><use xlink:href="#icon-twitter"></use></svg></a>
+            <a href="https://instagram.com/artofwhere" target="_blank" title="Instagram profile"><svg><use xlink:href="#icon-instagram"></use></svg></a>
+            <a href="https://www.pinterest.com/artofwhere" target="_blank" title="Pinterest page"><svg><use xlink:href="#icon-google-plus2"></use></svg></a>
+            <a href="https://plus.google.com/113940805469543102991" target="_blank" title="Google+ page"><svg><use xlink:href="#icon-linkedin"></use></svg></a>
+            <a href="https://plus.google.com/113940805469543102991" target="_blank" title="Google+ page"><svg><use xlink:href="#icon-pinterest"></use></svg></a>
+        </div>
+    </div>
+    <div class="footer-copyright ">
+        <p class="container footer-copyright-text">© 2016 yeep. All rights reserved.
+            <a href="#/police_terms">Terms of Service</a> |
+            <a href="#/police_privacy">Privacy Policy</a></p>
+    </div>
+
+    <!-- footer svg -->
+    <div style="height: 0; width: 0;">
+        <svg style="height: 0; width: 0;">
+            <symbol id="icon-facebook2" viewBox="0 0 36 36" fill="hsl(221, 44%, 42%)">
+                <title>facebook2</title>
+                <path class="path1"  d="M32.625 0h-29.25c-1.856 0-3.375 1.519-3.375 3.375v29.25c0 1.856 1.519 3.375 3.375 3.375h14.625v-15.75h-4.5v-4.5h4.5v-2.25c0-3.72 3.030-6.75 6.75-6.75h4.5v4.5h-4.5c-1.238 0-2.25 1.013-2.25 2.25v2.25h6.75l-1.125 4.5h-5.625v15.75h10.125c1.856 0 3.375-1.519 3.375-3.375v-29.25c0-1.856-1.519-3.375-3.375-3.375z"></path>
+            </symbol>
+            <symbol id="icon-twitter" viewBox="0 0 36 36" fill="hsl(212, 100%, 63%)">
+                <title>twitter</title>
+                <path class="path1"  d="M36 7.959c-1.322 0.591-2.749 0.984-4.24 1.16 1.526-0.914 2.693-2.362 3.248-4.085-1.427 0.844-3.009 1.462-4.69 1.793-1.35-1.434-3.27-2.327-5.393-2.327-4.078 0-7.383 3.305-7.383 7.383 0 0.577 0.063 1.139 0.19 1.68-6.138-0.309-11.58-3.248-15.223-7.72-0.633 1.090-0.998 2.363-0.998 3.713 0 2.559 1.301 4.823 3.284 6.145-1.209-0.035-2.348-0.373-3.347-0.921 0 0.028 0 0.063 0 0.091 0 3.579 2.545 6.567 5.927 7.242-0.619 0.169-1.273 0.26-1.948 0.26-0.478 0-0.935-0.049-1.392-0.134 0.942 2.932 3.67 5.070 6.898 5.133-2.531 1.983-5.709 3.164-9.176 3.164-0.598 0-1.181-0.035-1.765-0.105 3.277 2.102 7.158 3.319 11.327 3.319 13.584 0 21.016-11.257 21.016-21.016 0-0.323-0.007-0.64-0.021-0.956 1.441-1.034 2.693-2.334 3.684-3.818z"></path>
+            </symbol>
+            <symbol id="icon-instagram" viewBox="0 0 36 36" fill="#333">
+                <title>instagram</title>
+                <path class="path1" d="M18 3.241c4.809 0 5.379 0.021 7.27 0.105 1.758 0.077 2.707 0.373 3.34 0.619 0.837 0.323 1.441 0.717 2.067 1.343 0.633 0.633 1.020 1.23 1.35 2.067 0.246 0.633 0.541 1.589 0.619 3.34 0.084 1.898 0.105 2.468 0.105 7.27s-0.021 5.379-0.105 7.27c-0.077 1.758-0.373 2.707-0.619 3.34-0.323 0.837-0.717 1.441-1.343 2.067-0.633 0.633-1.23 1.020-2.067 1.35-0.633 0.246-1.589 0.541-3.34 0.619-1.898 0.084-2.468 0.105-7.27 0.105s-5.379-0.021-7.27-0.105c-1.758-0.077-2.707-0.373-3.34-0.619-0.837-0.323-1.441-0.717-2.067-1.343-0.633-0.633-1.020-1.23-1.35-2.067-0.246-0.633-0.541-1.589-0.619-3.34-0.084-1.898-0.105-2.468-0.105-7.27s0.021-5.379 0.105-7.27c0.077-1.758 0.373-2.707 0.619-3.34 0.323-0.837 0.717-1.441 1.343-2.067 0.633-0.633 1.23-1.020 2.067-1.35 0.633-0.246 1.589-0.541 3.34-0.619 1.891-0.084 2.461-0.105 7.27-0.105zM18 0c-4.887 0-5.498 0.021-7.418 0.105-1.912 0.084-3.227 0.394-4.366 0.837-1.188 0.464-2.194 1.076-3.192 2.081-1.005 0.998-1.617 2.004-2.081 3.185-0.443 1.146-0.752 2.454-0.837 4.366-0.084 1.927-0.105 2.538-0.105 7.425s0.021 5.498 0.105 7.418c0.084 1.912 0.394 3.227 0.837 4.366 0.464 1.188 1.076 2.194 2.081 3.192 0.998 0.998 2.004 1.617 3.185 2.074 1.146 0.443 2.454 0.752 4.366 0.837 1.92 0.084 2.531 0.105 7.418 0.105s5.498-0.021 7.418-0.105c1.912-0.084 3.227-0.394 4.366-0.837 1.181-0.457 2.187-1.076 3.185-2.074s1.617-2.004 2.074-3.185c0.443-1.146 0.752-2.454 0.837-4.366 0.084-1.92 0.105-2.531 0.105-7.418s-0.021-5.498-0.105-7.418c-0.084-1.912-0.394-3.227-0.837-4.366-0.443-1.195-1.055-2.201-2.060-3.199-0.998-0.998-2.004-1.617-3.185-2.074-1.146-0.443-2.454-0.752-4.366-0.837-1.927-0.091-2.538-0.113-7.425-0.113v0z"></path>
+                <path class="path2" d="M18 8.754c-5.105 0-9.246 4.141-9.246 9.246s4.141 9.246 9.246 9.246 9.246-4.141 9.246-9.246c0-5.105-4.141-9.246-9.246-9.246zM18 23.998c-3.312 0-5.998-2.686-5.998-5.998s2.686-5.998 5.998-5.998c3.312 0 5.998 2.686 5.998 5.998s-2.686 5.998-5.998 5.998z"></path>
+                <path class="path3" d="M29.77 8.388c0 1.192-0.966 2.159-2.159 2.159s-2.159-0.966-2.159-2.159c0-1.192 0.966-2.159 2.159-2.159s2.159 0.966 2.159 2.159z"></path>
+            </symbol>
+            <symbol id="icon-google-plus2" viewBox="0 0 36 36" fill="hsl(7, 71%, 55%)">
+                <title>google-plus2</title>
+                <path class="path1" d="M32.625 0h-29.25c-1.856 0-3.375 1.519-3.375 3.375v29.25c0 1.856 1.519 3.375 3.375 3.375h29.25c1.856 0 3.375-1.519 3.375-3.375v-29.25c0-1.856-1.519-3.375-3.375-3.375zM13.5 27c-4.978 0-9-4.022-9-9s4.022-9 9-9c2.433 0 4.465 0.886 6.033 2.355l-2.447 2.348c-0.668-0.64-1.835-1.385-3.586-1.385-3.073 0-5.583 2.545-5.583 5.681s2.51 5.681 5.583 5.681c3.565 0 4.901-2.559 5.105-3.881h-5.105v-3.087h8.501c0.077 0.45 0.141 0.9 0.141 1.491 0 5.147-3.445 8.796-8.641 8.796zM31.5 18h-2.25v2.25h-2.25v-2.25h-2.25v-2.25h2.25v-2.25h2.25v2.25h2.25v2.25z"></path>
+            </symbol>
+            <symbol id="icon-linkedin" viewBox="0 0 36 36" fill="hsl(216, 79%, 20%)">
+                <title>linkedin</title>
+                <path class="path1" d="M32.625 0h-29.25c-1.856 0-3.375 1.519-3.375 3.375v29.25c0 1.856 1.519 3.375 3.375 3.375h29.25c1.856 0 3.375-1.519 3.375-3.375v-29.25c0-1.856-1.519-3.375-3.375-3.375zM13.5 29.25h-4.5v-15.75h4.5v15.75zM11.25 11.25c-1.245 0-2.25-1.005-2.25-2.25s1.005-2.25 2.25-2.25c1.245 0 2.25 1.005 2.25 2.25s-1.005 2.25-2.25 2.25zM29.25 29.25h-4.5v-9c0-1.245-1.005-2.25-2.25-2.25s-2.25 1.005-2.25 2.25v9h-4.5v-15.75h4.5v2.791c0.928-1.273 2.348-2.791 3.938-2.791 2.798 0 5.063 2.517 5.063 5.625v10.125z"></path>
+            </symbol>
+            <symbol id="icon-pinterest" viewBox="0 0 36 36" fill="hsl(358, 71%, 46%)">
+                <title>pinterest</title>
+                <path class="path1" d="M18 2.405c-8.613 0-15.595 6.982-15.595 15.595 0 6.609 4.113 12.248 9.914 14.52-0.134-1.23-0.26-3.129 0.056-4.472 0.281-1.216 1.828-7.748 1.828-7.748s-0.464-0.935-0.464-2.313c0-2.166 1.259-3.79 2.82-3.79 1.329 0 1.976 0.998 1.976 2.194 0 1.336-0.851 3.34-1.294 5.189-0.373 1.554 0.773 2.82 2.306 2.82 2.77 0 4.901-2.925 4.901-7.144 0-3.734-2.686-6.342-6.511-6.342-4.437 0-7.038 3.326-7.038 6.771 0 1.343 0.513 2.777 1.16 3.558 0.127 0.155 0.148 0.288 0.105 0.45-0.12 0.492-0.38 1.554-0.436 1.772-0.070 0.288-0.225 0.345-0.52 0.211-1.948-0.907-3.164-3.755-3.164-6.040 0-4.922 3.572-9.436 10.301-9.436 5.407 0 9.612 3.853 9.612 9.007 0 5.372-3.389 9.703-8.093 9.703-1.582 0-3.066-0.823-3.572-1.793 0 0-0.78 2.974-0.97 3.705-0.352 1.357-1.301 3.052-1.941 4.085 1.463 0.45 3.009 0.696 4.62 0.696 8.613 0 15.595-6.982 15.595-15.595 0-8.62-6.982-15.602-15.595-15.602z"></path>
+            </symbol>
+            <!-- temp -->
+            <!-- loading icon -->
+            <symbol id="icon-loading" class="spinner" viewBox="0 0 66 66">
+                <title>loading</title>
+                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </symbol>
+        </svg>
+    </div>
+</footer>
+<!-- LogIn -->
+<div id="loginModal" class="modal login-modal">
+    <div class="row">
+        <div id="loginBox" class="col s12">
+            <div class="row login-modal-content">
+
+                <form class="col s12">
+                    <div class="row">
+                        <p class="col s12 login-title">
+                            <svg class="login-icon">
+                                <use xlink:href="#icon-logo-only"></use>
+                            </svg>
+                            <span class="login-title-text">LOGIN</span>
+                            <a href="#/login" class="right login-to-sign">Sign up</a>
+                        </p>
+                        <div class="input-field col s12">
+                            <input id="loginEmail" type="email" class="validate" required>
+                            <label for="loginEmail" id="loginEmailLabel"
+                                   data-error="please enter your email">Email</label>
+                        </div>
+
+                        <div class="input-field  col s12">
+                            <input id="loginPwd" type="password" class="validate" required>
+                            <label for="loginPwd" id="loginPwdLabel"
+                                   data-error="please enter your password">Password</label>
+                        </div>
+                        <div class="col s12 login-keep-me">
+                            <input type="checkbox" class="filled-in" id="RememberMe"/>
+                            <label for="RememberMe">Remember me</label>
+                        </div>
+                        <div class="col s12">
+                            <a href="#!" id="loginSubmit" class="btn cl-red white-text login-submit">Login</a>
+                        </div>
+
+                        <p class="login-modal-forget right-align">
+                            <a href="#/forget_password" class="modal-action modal-close">Forgot password?</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Mobile Search -->
+<div id="hsmModal" class="modal mobile-search">
+    <div class="modal-content">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12 mobile-search-item">
+                    <input id="whatM" type="text" class="auto-what" data-type="what">
+                    <label for="whatM">what</label>
+                    <span class="mobile-search-clear search-clear"><i class="material-icons">close</i></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field  col s12 mobile-search-item">
+                    <input id="whereM" type="text" class="auto-where" data-type="where">
+                    <label for="whereM">where</label>
+                    <span class="mobile-search-clear search-clear"><i class="material-icons">close</i></span>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <a href="#/search_list" class=" modal-action btn-flat small cl-red-text">search</a>
+            <a href="#!" class=" modal-action modal-close btn-flat small grey-text">cancel</a>
+        </div>
+    </div>
+</div>
+<!-- Mobile LiftSide -->
+<div id="slide-out" class="side-nav">
+    <!-- slider content : no login -->
+    <div class="sn-content-nolog ">
+        <svg class="sn-logo">
+            <use xlink:href="#icon-logo"></use>
+        </svg>
+        <p class="sn-intro grey-text">
+            There is no doubt that the more ways people have to find your business on the internet, the more customers
+            through your door! With our user-friendly search functions, high search engine rankings and mobile website
+            we make it easy for people to find you. Once you've added or claimed your listing you can edit the
+            information at any time. Join us now!
+        </p>
+        <div class="center-align">
+            <a class="btn waves-effect cl-red modal-login-trigger" data-activates="slide-out"
+               href="#loginModal">My Business</a>
+        </div>
+    </div>
+
+    <!--  slider content : login  -->
+    <div class="slider-content-log hide">
+        <div class="slider-content-log hide">
+            <div class="sn-top">
+                <img class="sn-head" src="http://img.yeep.com.au/sample/user_avatar.jpg" alt="">
+                <h4 class="sn-name cl-red-text">Hello,Allen</h4>
+            </div>
+            <div class="collection sn-menu">
+                <a href="#!" class="collection-item grey-text darken-1">my business</a>
+                <a href="#!" class="collection-item grey-text darken-1">account setting</a>
+            </div>
+            <p class="sn-logout">
+                <a href="!#" class="right-align light-blue-text accent-1">log out</a>
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Back to top -->
+<div id="backTop" class="hide-on-small-only back-top"><i class="material-icons">expand_less</i></div>
+<!-- Page Position -->
+<input type="hidden" name="pagePosition" value="other" id="pagePosition">
+
+
+<!-- build:common -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/director/director.min.js"></script>
+<script src="lib/nprogress/nprogress.js"></script>
+<script src="lib/lightbox/lightbox.min.js"></script>
+<script src="lib/md5/md5.js"></script>
+<script src="lib/materialize-css/materialize.min.js"></script>
+<script src="lib/uploadifive/jquery.uploadifive.js"></script>
+<script src="lib/vue/vue.min.js"></script>
+<script src="js/common.js"></script>
+<!-- endbuild -->
+
+<!-- build:vendor -->
+
+<!-- endbuild -->
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmXf2pUfldcQrQ2MGN7G8t1-xgPdaHIhY&libraries=places"></script>
+
+<!-- build:dev -->
+<script src="js/route.js"></script>
+<!-- endbuild -->
+
+</body>
+</html>

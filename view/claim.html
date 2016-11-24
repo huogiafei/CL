@@ -1,0 +1,92 @@
+<div class="container cl-wrapper" id="claimApp">
+    <input type="hidden" id="pv" value="claim">
+    <div class="row">
+        <div class="col s12 m12 l8 ">
+            <!-- Claim Search Form -->
+            <div class="claim-search" id="claimStore">
+                <h4 class="claim-search-title">Search below to see if you are listed.</h4>
+                <form>
+                    <div class="row no-margin-bottom">
+                        <div class="input-field col s12">
+                            <input id="claimName" type="text" class="validate" required
+                                   v-model="businessName" @keyup="checkNull">
+                            <label for="claimName" data-error="please enter your business name." v-model="businessName">Business Name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="claimSuburb" v-model="suburb" type="text" class="validate"
+                                   v-model="suburb">
+                            <label for="claimSuburb" data-error="required">Suburb</label>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="card-action right-align">
+                    <button type="submit" class="btn cl-red" @click="claimSubmit">search</button>
+                </div>
+            </div>
+
+            <!-- Claim Result List => crl -->
+            <div class="claim-result">
+                <div v-show="stores.length > 0" >
+                    <p class="crl-title">Choose your business or <a href="#/add_store">add a new listing</a>
+                        <span class="right grey-text accent-3">{{page.total}} results</span>
+                    </p>
+                    <ul class="crl-list">
+                        <li v-for="store in stores">
+                            <div class="row crl-item-wrap">
+                                <div class=" col s10 m8 l8">
+                                    <p class="crl-store-name">{{store.storeName}}</p>
+                                    <p class="crl-store-address grey-text truncate">{{store.address}}</p>
+                                </div>
+                                <div class="col s1 m4 l4 right-align">
+                                    <a :href="store.claimLink"
+                                       class=" hide-on-small-only btn-flat small cl-red white-text crl-store-btn">claim</a>
+                                    <a :href="store.claimLink" class="hide-on-med-and-up crl-store-btn-m"><i class="material-icons">chevron_right</i></a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="pagination center-align claim-page" v-show="page.pageCount > 1">
+                        <li :class="{'disabled': page.curPage == 1}"
+                            @click="pageClick('prev')">
+                            <a href="javascript:void(0)">
+                            <i class="material-icons">chevron_left</i></a>
+                        </li>
+
+                        <li v-for="n in page.pageCount"
+                            :class="{'active': n == page.curPage}"
+                            @click="pageClick(n)">
+                            <a href="javascript:void(0)">{{n}}</a></li>
+
+                        <li :class="{'disabled': page.isEnd}"
+                            @click="pageClick('next')">
+                            <a href="javascript:void(0)">
+                            <i class="material-icons">chevron_right</i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Claim No Result -->
+                <div class="claim-no-result" v-show="noResult">
+                    <p class="crl-title center-align">No result , try more or
+                        <a href="#/add_store">add a new listing</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- Claim Introduce -->
+        <div class="col s12 m12 l4 claim-intro">
+            <p>Yeep assigns each and every business a personalised profile page to advertise all your business details!</p>
+            <p>By claiming your business, Yeep gives you a professional profile page on the Internet where you can:</p>
+            <ul class="ci-list">
+                <li>Write a description about your business</li>
+                <li>Keep your info up to date (category and hours of operation)</li>
+                <li>List any products, services or specialisations offered by your business</li>
+                <li>Display your contact details (address, phone, and more)</li>
+                <li>Add extended contact details - Emails, Websites, Phone/Fax/Mobile/After Hours Numbers, Social
+                    Media Accounts, etc.
+                </li>
+            </ul>
+            <p>Driven by a reliable search & list format, our new website will allow you to get noticed on the web! Join Yeep now. Give your customers the inside scoop and get to know your customers!</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,150 @@
+<!-- SEARCH LIST  => sl -->
+<div class="container search-list-wrapper" id="slApp">
+    <input type="hidden" id="pv" value="searchList">
+    <div class="search-list-main">
+        <!-- SL-header -->
+        <div class="row no-margin-bottom">
+            <!-- search title -->
+            <div class="col s12">
+                <h1 class="cl-title sl-title">Automotive in Brooklands</h1>
+                <input type="hidden" name="keyword" id="slKeyword" value="">
+                <input type="hidden" name="place" id="slPlace" value="vi">
+            </div>
+        </div>
+
+
+        <div class="cl-blank-loading" v-show="isLoading"></div>
+
+
+        <transition
+                name="custom-classes-transition"
+                enter-active-class="animated fadeIn"
+                leave-active-class="animated fadeOut">
+            <div style="display: none;" v-show="!isLoading && stores.length > 0">
+                <!-- SL-filter -->
+                <div class="row sl-filter ">
+                    <!-- desktop -->
+                    <div class=" col s12 hide-on-small-only">
+                        <!-- Desktop -->
+                        <a href="#" @click.prevent="filterHandler(0)"
+                           :class="['btn','sl-filter-btn',{active:curFilterId == 0}]">
+                            <i class="hide-on-small-only material-icons left">star</i>pop
+                        </a>
+                        <a href="#" @click.prevent="filterHandler(1)"
+                           :class="['btn','sl-filter-btn',{active:curFilterId == 1}]">
+                            <i class="hide-on-small-only material-icons left">place</i>distance
+                        </a>
+                        <a href="#" @click.prevent="filterHandler(2)"
+                           :class="['btn','sl-filter-btn',{active:curFilterId == 2}]">
+                            <i class="hide-on-small-only material-icons left">access_time</i>open now
+                        </a>
+                        <!-- result -->
+                        <span class="right grey-text sl-result-text">
+                        {{page.total}} results</span>
+                    </div>
+
+                    <!-- Mobile -->
+                    <div class="hide-on-med-and-up input-field col s12 sl-mobile-filter">
+                        <a class='dropdown-button btn cl-red' href='#'
+                           data-activates='slFilter'>{{FILTER[curFilterId]}}</a>
+                        <ul id="slFilter" class="dropdown-content">
+                            <li><a href="javascript:void(0)" @click="filterHandler(0)">popular</a></li>
+                            <li><a href="javascript:void(0)" @click="filterHandler(1)">distance</a></li>
+                            <li><a href="javascript:void(0)" @click="filterHandler(2)">openTime</a></li>
+                        </ul>
+                        <span class="right grey-text sl-result-text">{{page.total}}results</span>
+                    </div>
+                </div>
+
+                <!-- SL-main -->
+                <div class="row sl-main ">
+                    <!-- store list -->
+                    <div class="col s12 m6 l6 sl-left ">
+                        <div class="sl-stores">
+                            <div class="sl-stores-main">
+                                <ul class="sl-stores-list">
+                                    <li :class="['sl-store',{active:activeStoreIndex == index}]"
+                                        v-for="(store,index) in stores"
+                                        @click.stop="storeClickHandler(index)"
+                                        :data-lng="store.coordinate.lng" :data-lat="store.coordinate.lat">
+                                        <div class="row no-margin-bottom">
+                                            <div class="col s12 m12 l9">
+                                                <h2 class="sl-store-name">
+                                                    <a target="_blank" @click="storeLinkHandler"
+                                                       :href="store.storeLink">{{store.name}}</a>
+                                                </h2>
+                                                <p class="sl-store-info sl-store-address">{{store.address}}</p>
+                                                <p class="sl-store-info sl-store-tel">{{store.phone}}</p>
+                                                <p class="sl-store-info sl-store-opentime">{{store.openInfo}}</p>
+                                                <p class="sl-store-info sl-store-contact">
+                                                    <a v-if="store.contact.email" :href="'mailto:'+store.contact.email">
+                                                        <i class="material-icons">email</i></a>
+                                                    <a v-if="store.contact.website" :href="store.contact.website"
+                                                       target="_blank">
+                                                        <i class="material-icons">link</i></a>
+                                                </p>
+                                            </div>
+                                            <div v-if="store.storeImg" class="col l3 hide-on-med-and-down">
+                                                <a :href="store.storeLink" target="_blank" @click="storeLinkHandler">
+                                                    <div :style="'background-image: url('+store.storeImg+');'"
+                                                         class="sl-store-img"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- sl-main-tip -->
+                        <div class="sl-stores-tip no-more" v-show="page.isEnd"
+                             style="display: none;">no more
+                        </div>
+                        <div class="sl-stores-tip loading" v-show="page.isLock">loading</div>
+                    </div>
+
+                    <!--SL right side : search map & rcmd -->
+                    <div class="col s12 m6 l6 hide-on-small-only sl-right">
+                        <div class="sl-map" id="sl-map"></div>
+                        <div class="row">
+                            <div class="col m12 l6">
+                                <div class="sl-rs-box sl-rcmd-category">
+                                    <h3 class="sl-rs-title">Shop in Brooklands</h3>
+                                    <ul>
+                                        <li><a href="#">Automotive</a><span class="right grey-text">123 stores</span>
+                                        </li>
+                                        <li><a href="#">Cycling </a><span class="right grey-text">53 stores</span></li>
+                                        <li><a href="#">Cooking</a><span class="right grey-text">33 stores</span></li>
+                                        <li><a href="#">Car</a><span class="right grey-text">28 stores</span></li>
+                                        <li><a href="#">Sport</a><span class="right grey-text">20 stores</span></li>
+                                        <li><a href="#">Business</a><span class="right grey-text">12 stores</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col m12 l6">
+                                <div class="sl-rcmd-good">
+                                    <img src="../img/src/sample/good_dog.jpg" class="sl-good-img" alt="">
+                                    <div class="sl-good-info">
+                                        <p class="sl-good-name">Vienna PU Leather Bar Stool - Black</p>
+                                        <span class="sl-good-price">$64.96</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+
+        <!-- SL-blank : no result-->
+
+        <transition
+                name="custom-classes-transition"
+                enter-active-class="animated fadeIn"
+                leave-active-class="animated fadeOut">
+            <div class="sl-blank" style="display: none;" v-show="!isLoading && stores.length == 0">
+                <div class="sl-blank-img"></div>
+                <p class="sl-blank-title cl-red-text">not found</p>
+            </div>
+        </transition>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<header class="head" id="header">
+    <div class="head-content container hide-on-small-only row ">
+        <!--------- Desktop & Tablet ---------->
+        <!-- logo -->
+        <div class="col m3 head-logo no-padding">
+            <a href="#/home">
+                <svg id="logo">
+                    <use xlink:href="#icon-logo"></use>
+                </svg>
+            </a>
+        </div>
+
+        <!-- search box -->
+        <div class="col m6 head-search-box">
+            <form class="row head-search-form ">
+                <div class="col m10 head-search-main">
+                    <div class="head-search-item what">
+                        <input placeholder="bar, pet shop, hotel" id="what" type="text"
+                               class="head-search-input auto-what"
+                               data-type="what">
+                        <span class="head-search-clear search-clear"><i class="material-icons">close</i></span>
+                    </div>
+                    <span class="head-search-place"><i class="material-icons">place</i></span>
+                    <div class="head-search-item where">
+                        <input placeholder="Where" id="where" type="text" class="head-search-input auto-where"
+                               data-type="where">
+                        <span class="head-search-clear search-clear"><i class="material-icons">close</i></span>
+                    </div>
+                </div>
+
+                <div class="col m1">
+                    <button class="btn head-search-btn cl-red"><i class="material-icons">search</i></button>
+                </div>
+            </form>
+        </div>
+
+        <!-- login btn  -->
+        <div class="col m3 no-padding">
+            <div class="right head-login-btn ">
+                <a id="loginBtn" class=" btn cl-red modal-login-trigger" href="#loginModal">mybusiness</a>
+            </div>
+            <div class="right head-access hide">
+                <img class="head-access-head" src="http://img.yeep.com.au/icon/default_avatar.png" alt="">
+                <div class="card ha-wrapper">
+                    <h4 class="cl-red-text ha-name">Hello,Allen</h4>
+                    <div class="collection">
+                        <a href="#/my_stores" class="collection-item blue-text">my business</a>
+                        <a href="#/account_setting" class="collection-item blue-text">account setting</a>
+                    </div>
+                    <div class="right-align ha-logout"><a href="!#" class="grey-text text-darken-1">log out</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- mobile only -->
+    <div class="mobile-nav hide-on-med-and-up">
+        <a href="#" data-activates="slide-out" class="left left-align head-mobile-btn white-text button-collapse"><i
+                class="material-icons">more_vert</i></a>
+        <a class="right right-align head-mobile-btn white-text modal-search-trigger" href="#hsmModal"><i
+                class="material-icons">search</i></a>
+        <div class="head-logo-m center">
+            <a href="#/home">
+                <svg>
+                    <use xlink:href="#icon-logo-m"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- logo svg place -->
+    <div style="height: 0; width: 0;">
+        <svg style="height: 0; width: 0;">
+            <!-- logo -->
+            <symbol id="icon-logo" viewBox="0 0 320 100">
+                <path fill="none" stroke="#E74C3C" stroke-width="6" stroke-miterlimit="10"
+                      d="M48 93.392H12v-45l-9-9L29.532 3h54.43L111 39.392l-9 7.595v46.405H66s-27-18-27-36 18-18 18-18 18 0 18 18-27 36-27 36z"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <ellipse cx="56.544" cy="56.535" fill="#E74C3C" rx="8.544" ry="8.142"/>
+                <path fill="#E74C3C"
+                      d="M147.393 73.37l-15-36.016c-.234-.442-.352-.924-.352-1.445 0-.859.306-1.595.918-2.207.611-.611 1.348-.918 2.207-.918s1.602.3 2.227.898c.338.365.586.756.742 1.172l12.656 30.352 12.656-30.352c.156-.416.416-.807.781-1.172.599-.599 1.328-.898 2.188-.898s1.595.307 2.207.918c.611.612.918 1.348.918 2.207 0 .521-.117 1.003-.352 1.445l-23.281 55.859c-.156.416-.404.794-.742 1.133-.625.625-1.367.938-2.227.938s-1.596-.307-2.207-.918c-.612-.612-.918-1.348-.918-2.207 0-.521.117-1.003.352-1.445l7.227-17.344zm62.305-7.461c.859 0 1.595.307 2.207.918.611.612.918 1.348.918 2.207s-.3 1.602-.898 2.227c-4.037 3.516-8.789 5.273-14.258 5.273-6.042 0-11.198-2.135-15.469-6.406-4.271-4.271-6.406-9.427-6.406-15.469 0-6.041 2.135-11.197 6.406-15.469 4.271-4.271 9.427-6.406 15.469-6.406 6.041 0 11.197 2.136 15.469 6.406 4.271 4.271 6.406 9.428 6.406 15.469 0 .859-.307 1.596-.918 2.207-.612.612-1.348.918-2.207.918h-34.102c.572 2.995 2.005 5.639 4.297 7.93 3.047 3.047 6.731 4.57 11.055 4.57 3.906 0 7.266-1.236 10.078-3.711.572-.442 1.223-.664 1.953-.664zm3.32-14.375c-.573-2.994-2.006-5.638-4.297-7.93-3.047-3.047-6.732-4.57-11.055-4.57-4.323 0-8.008 1.523-11.055 4.57-2.292 2.292-3.725 4.936-4.297 7.93h30.704zm46.68 14.375c.859 0 1.595.307 2.207.918.611.612.918 1.348.918 2.207s-.3 1.602-.898 2.227c-4.037 3.516-8.789 5.273-14.258 5.273-6.042 0-11.198-2.135-15.469-6.406-4.271-4.271-6.406-9.427-6.406-15.469 0-6.041 2.135-11.197 6.406-15.469 4.271-4.271 9.427-6.406 15.469-6.406 6.041 0 11.197 2.136 15.469 6.406 4.271 4.271 6.406 9.428 6.406 15.469 0 .859-.307 1.596-.918 2.207-.612.612-1.348.918-2.207.918h-34.102c.572 2.995 2.005 5.639 4.297 7.93 3.047 3.047 6.731 4.57 11.055 4.57 3.906 0 7.266-1.236 10.078-3.711.572-.442 1.223-.664 1.953-.664zm3.32-14.375c-.573-2.994-2.006-5.638-4.297-7.93-3.047-3.047-6.732-4.57-11.055-4.57-4.323 0-8.008 1.523-11.055 4.57-2.292 2.292-3.725 4.936-4.297 7.93h30.704zm19.024 40.625c0 .859-.307 1.595-.918 2.207-.612.611-1.348.918-2.207.918s-1.596-.307-2.207-.918c-.612-.612-.918-1.348-.918-2.207v-37.5c0-6.041 2.135-11.197 6.406-15.469 4.271-4.271 9.427-6.406 15.469-6.406 6.041 0 11.197 2.136 15.469 6.406 4.271 4.271 6.406 9.428 6.406 15.469 0 6.042-2.136 11.198-6.406 15.469-4.271 4.271-9.428 6.406-15.469 6.406-6.042 0-11.198-2.135-15.469-6.406-.053-.052-.104-.104-.156-.156v22.187zm0-37.5c0 4.323 1.523 8.008 4.57 11.055 3.047 3.047 6.731 4.57 11.055 4.57 4.322 0 8.008-1.523 11.055-4.57 3.047-3.047 4.57-6.731 4.57-11.055 0-4.322-1.523-8.008-4.57-11.055s-6.732-4.57-11.055-4.57c-4.323 0-8.008 1.523-11.055 4.57s-4.57 6.733-4.57 11.055z"/>
+            </symbol>
+            <!-- logo mobile -->
+            <symbol id="icon-logo-m" viewBox="0 0 40 40">
+                <title>mobile logo</title>
+                <path fill="none" stroke="#fff" stroke-width="1.9919" stroke-miterlimit="10" stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.935 31.004h-11.951v-14.939l-2.988-2.988 8.808-12.081h18.070l8.976 12.081-2.988 2.521v15.405h-11.951c0 0-8.963-5.976-8.963-11.951s5.976-5.976 5.976-5.976 5.976 0 5.976 5.976-8.963 11.951-8.963 11.951z"></path>
+                <path fill="#fff"
+                      d="M21.608 18.768c0 1.493-1.27 2.703-2.836 2.703s-2.836-1.21-2.836-2.703c0-1.493 1.27-2.703 2.836-2.703s2.836 1.21 2.836 2.703z"></path>
+            </symbol>
+            <!-- only logo -->
+            <symbol id="icon-logo-only" viewBox="0 0 120 100">
+                <path fill="none" stroke="#E74C3C" stroke-width="6" stroke-miterlimit="10"
+                      d="M48 93.392H12v-45l-9-9L29.532 3h54.43L111 39.392l-9 7.595v46.405H66s-27-18-27-36 18-18 18-18 18 0 18 18-27 36-27 36z"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <ellipse cx="56.544" cy="56.535" fill="#E74C3C" rx="8.544" ry="8.142"/>
+            </symbol>
+        </svg>
+    </div>
+</header>
