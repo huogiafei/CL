@@ -477,15 +477,16 @@ main {
 .sn-head {
     width: 60px;
     height: 60px;
+    margin-left: 2px;
 }
 
 .sn-name {
-    font-size: 1rem;
-    margin-top: 0.2rem;
+    font-size: 1.5rem;
+    margin: 0 0 0 2px;
+    line-height: 3rem;
 }
 
 .sn-menu {
-    margin-top: 2rem;
 }
 
 /* LOGIN */
@@ -2116,6 +2117,7 @@ footer {
 }
 
 .cat-tab {
+    position: relative;
     font-size: 1rem;
     color: #999;
     display: inline-block;
@@ -2130,10 +2132,24 @@ footer {
     cursor: pointer;
 }
 
-.cat-tab.active {
-    border-bottom: 2px solid #E74C3C;
-    color: #E74C3C;
+.cat-tab:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    height: 2px;
+    background: hsla(6, 78%, 57%, .7);
+    will-change: transform;
+    transform: scale(0, 1);
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transition: all 0.2s ease;
+}
 
+.cat-tab.active:after {
+    transform: scale(1, 1);
+    opacity: 1;
 }
 
 @media screen and  (max-width: 700px) {

@@ -91,17 +91,19 @@ $(function () {
         var password = $('#loginPwd').val();
         var remember = $('#RememberMe').prop('checked');
 
-        if (email != '' && password != '') {
-            loginSubmit(email, password, remember)
+        if (email == '') {
+            $("#loginEmail").addClass('invalid').next()
+                .attr('data-error', loginStatus.email['NULL'])
+                .addClass('active');
         }
-        else if (email == '') {
-            $("#loginEmailLabel").attr('data-error', loginStatus.email['NULL']);
-            $("#loginEmail").addClass('invalid').focus();
+        if (password == '') {
+            $("#loginPwd").addClass('invalid').next()
+                .attr('data-error', loginStatus.password['NULL'])
+                .addClass('active');
+        }
 
-        }
-        else if (password == '') {
-            $("#loginPwdLabel").attr('data-error', loginStatus.password['NULL']);
-            $("#loginEmail").addClass('invalid').focus();
+        else if (!$("#loginForm").hasClass('invalid')) {
+            loginSubmit(email, password, remember)
         }
     })
 
@@ -119,8 +121,10 @@ $(function () {
             console.log(data);
             switch (data.statusCode) {
                 case 0: { //account not exsit.
-                    $("#loginPwdLabel").attr('data-error', loginStatus.password['NOT_EXIST']);
-                    $("#loginEmail").addClass('invalid').focus();
+                    console.log('ane');
+                    $("#loginEmail").addClass('invalid').next()
+                        .attr('data-error', loginStatus.email['NOT_EXIST'])
+                        .addClass('active');
                     break;
                 }
                 case 1: { //success
@@ -132,13 +136,15 @@ $(function () {
                     break;
                 }
                 case 2: { //password wrong.
-                    $("#loginPwdLabel").attr('data-error', loginStatus.password['WRONG']);
-                    $("#loginPwd").addClass('invalid').focus();
+                    $("#loginPwd").addClass('invalid').next()
+                        .attr('data-error', loginStatus.password['WRONG'])
+                        .addClass('active');
                     break;
                 }
-                case 3: { //password wrong.
-                    $("#loginEmailLabel").attr('data-error', loginStatus.email['NOT_ACTIVATED']);
-                    $("#loginEmail").addClass('invalid').focus();
+                case 3: { //account not  activated.
+                    $("#loginEmail").addClass('invalid').next()
+                        .attr('data-error', loginStatus.email['NOT_ACTIVATED'])
+                        .addClass('active');
                     break;
                 }
             }

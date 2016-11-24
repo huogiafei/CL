@@ -1,0 +1,56 @@
+.uploadifive-button {
+    position: relative;
+    width: 100%;
+    color: #E74C3C;
+    background-color: #eee;
+    height: 30px;
+    cursor: pointer;
+}
+
+.uploadifive-button .buttontext {
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+    background-color: #e74c3c;
+}
+
+.uploadifive-button:hover, .uploadifive-button:active, .uploadifive-button:focus {
+}
+
+.btn-upload-img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.uploadifive-queue-item {
+    display: none;
+}
+
+.uploadifive-queue-item .close,
+.uploadifive-queue-item .filename,
+.uploadifive-queue-item .fileinfo{
+    display: none;
+}
+
+.uploadifive-queue-item .progress {
+    height: 1px;
+    width: 100%;
+}
+
+.uploadifive-queue-item .progress-bar {
+    background-color: #0072BC;
+    height: 1px;
+    width: 0;
+}
