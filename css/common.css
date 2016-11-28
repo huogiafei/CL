@@ -147,6 +147,9 @@
 }
 
 /*COMMON*/
+*{
+    -webkit-tap-highlight-color: transparent;
+}
 body, html {
     width: 100%;
     overflow-x: hidden;
@@ -234,7 +237,7 @@ main {
     width: 100%;
     background-color: hsl(0, 0%, 100%);
     overflow: visible;
-    z-index: 100;
+    z-index: 5000;
     position: fixed;
     top: 0;
     left: 0;
@@ -486,7 +489,8 @@ main {
     line-height: 3rem;
 }
 
-.sn-menu {
+.sn-menu a{
+    line-height: 30px!important;
 }
 
 /* LOGIN */
@@ -714,7 +718,7 @@ footer {
 
 .mb-del-text1{
     margin-bottom: 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .mb-del-text2{
@@ -1073,6 +1077,7 @@ footer {
 .as-img-tips{
     cursor: default;
     margin-left: 5px;
+    margin-top: -2px;
 }
 
 .as-add-title{
@@ -1103,6 +1108,9 @@ footer {
     top: 0;
     background-color: transparent;
     cursor: pointer;
+    width: 30px;
+    text-align: right;
+
 }
 
 .as-add-del i{
@@ -1188,6 +1196,17 @@ footer {
 
 .as-finish-link{
     margin-top: 4rem;
+}
+
+@media screen and (max-width: 700px){
+    .as-finish-link{
+        margin-top: 1rem;
+    }
+    .as-finish-link a{
+        display: block;
+        width: 180px;
+        margin: 10px auto;
+    }
 }
 
 /**** ACCOUNT SETTING ****/
@@ -1846,6 +1865,11 @@ footer {
     }
 }
 
+.sl-stores-load{
+    margin: 10px 0;
+    width: 100%;
+}
+
 /*SL Right*/
 .sl-right {
 
@@ -2485,7 +2509,7 @@ footer {
     width: 100%;
     z-index: 1000;
     height: 100%;
-    background: url(http://img.yeep.com.au/icon/loading.svg) no-repeat center 40%;
+    background: url(../img/src/icon/loading.svg) no-repeat center 40%;
 }
 
 /**** CONTACT US ****/

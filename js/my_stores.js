@@ -51,7 +51,7 @@ function entry_myStores() {
             }).done(function (data) {
                 console.log(data)
                 if (data.statusCode == 1) {
-                    myStoresApp.stores = []//data.data.list;
+                    myStoresApp.stores = data.data.list;
                     myStoresApp.isLoading = false;
                 }
 

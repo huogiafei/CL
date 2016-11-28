@@ -1,4 +1,4 @@
-function entry_contact(){
+function entry_contact() {
     $(function () {
         var contactApp = new Vue({
             el: '#contactApp',
@@ -33,23 +33,23 @@ function entry_contact(){
                     }
                 },
                 sendHandler: function () {
-                    console.log('save')
-                    if(this.fullName == ""){
-                        $("#fullName").addClass('invalid').next().addClass('active');
+                    if (this.curTopicType != 0) {
+                        if (this.fullName == "") {
+                            $("#fullName").addClass('invalid').next().addClass('active');
+                        }
+                        if (this.email == "") {
+                            $("#email").addClass('invalid').next().addClass('active');
+                        }
+                        if (this.subject == "") {
+                            $("#subject").addClass('invalid').next().addClass('active');
+                        }
+                        if (this.message == "") {
+                            $("#message").addClass('invalid').next().addClass('active');
+                        }
+                        else if (!$('#contactForm input').hasClass('invalid')) {
+                            messageSend();
+                        }
                     }
-                    if(this.email == ""){
-                        $("#email").addClass('invalid').next().addClass('active');
-                    }
-                    if(this.subject == ""){
-                        $("#subject").addClass('invalid').next().addClass('active');
-                    }
-                    if(this.message == ""){
-                        $("#message").addClass('invalid').next().addClass('active');
-                    }
-                    if(!$('#contactForm input').hasClass('invalid')){
-                        messageSend();
-                    }
-
                 }
             },
 
@@ -93,7 +93,7 @@ function entry_contact(){
                     email: contactApp.email,
                     fullName: contactApp.fullName,
                     subject: contactApp.subject,
-                    message: contactApp.message.replace(/\n/g,"<br>"),
+                    message: contactApp.message.replace(/\n/g, "<br>"),
                     /*type 1,2*/
                     storeName: contactApp.storeName,
                     storeAddress: contactApp.storeSuburb,

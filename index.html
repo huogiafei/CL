@@ -24,6 +24,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no ">
+    <link rel="shortcut icon" href="icon.png" >
+    <!-- Android 主屏图标
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="196x196" href="icon.png">
     <!-- build:css -->
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
@@ -577,7 +581,7 @@
 <footer class="foot">
     <div class="row container footer-main">
         <!-- breadcrumbs -->
-        <div class="col s12 no-padding breadcrumb-wrap">
+        <div class="hide-on-small-and-down col s12 no-padding breadcrumb-wrap">
             <a href="#/" class="breadcrumb-home">
                 <svg>
                     <use xlink:href="#icon-logo-only"></use>
@@ -607,7 +611,7 @@
         <div class="col s12 m7 l6 no-padding footer-links">
             <a href="#/about">about us</a>
             <a href="#/contact">contact us</a>
-            <a href="#/browser_by_other">browse by other</a>
+            <a href="#/browser_by_other" class="hide-on-small-and-down">browse by other</a>
             <a href="#/stores">stores</a>
         </div>
         <div class="col s12 m5 l6 no-padding footer-social right-align">
@@ -643,7 +647,7 @@
             </a>
         </div>
     </div>
-    <div class="footer-copyright ">
+    <div class="hide-on-small-and-down footer-copyright ">
         <p class="container footer-copyright-text">© 2016 yeep. All rights reserved.
             <a href="#/police_terms">Terms of Service</a> |
             <a href="#/police_privacy">Privacy Policy</a></p>

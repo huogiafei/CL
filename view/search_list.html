@@ -80,14 +80,15 @@
                                                     <a v-if="store.contact.email" :href="'mailto:'+store.contact.email">
                                                         <i class="material-icons">email</i></a>
                                                     <a v-if="store.contact.website" :href="store.contact.website"
-                                                       target="_blank">
+                                                       target="_blank" :title="store.contact.website">
                                                         <i class="material-icons">link</i></a>
                                                 </p>
                                             </div>
-                                            <div v-if="store.storeImg" class="col l3 hide-on-med-and-down">
+                                            <div class="col l3 hide-on-med-and-down">
                                                 <a :href="store.storeLink" target="_blank" @click="storeLinkHandler">
-                                                    <div :style="'background-image: url('+store.storeImg+');'"
-                                                         class="sl-store-img"></div>
+                                                    <div :style="{backgroundImage: 'url('+store.storeImg+')'}"
+                                                         class="sl-store-img">
+                                                    </div>
                                                 </a>
                                             </div>
                                         </div>
@@ -100,7 +101,12 @@
                              style="display: none;">no more
                         </div>
                         <div class="sl-stores-tip loading" v-show="page.isLock">loading</div>
+                        <a class="btn cl-red white-text sl-stores-load"
+                           @click="loadMore"
+                           style="display: none;"
+                           v-show="!page.isLock && page.curPage % 3 == 0">load more</a>
                     </div>
+
 
                     <!--SL right side : search map & rcmd -->
                     <div class="col s12 m6 l6 hide-on-small-only sl-right">

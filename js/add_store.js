@@ -154,10 +154,13 @@ function entry_addStore() {
             },
 
             mounted: function () {
-                console.log('add_store_go');
                 getCurStep();
                 this.map = initMap(this.step2.geo);
-
+                $('.tooltipped').tooltip({
+                    position:'right',
+                    delay:50,
+                    tooltip:'Maximum size of 1MB jpg, png, gif'
+                })
             },
 
             computed: {
@@ -250,7 +253,7 @@ function entry_addStore() {
                             this.step2.time[i].close = close;
                         }
                     }
-                }
+                },
             },
 
             directives: {
@@ -334,8 +337,11 @@ function entry_addStore() {
                         add: function (event) {
                             /*var val = event.target.value;
                              console.log(val);*/
-                            this.list.push(this.newTodo.trim())
-                            this.newTodo = '';
+                            if(this.newTodo.trim() != ""){
+                                this.list.push(this.newTodo.trim())
+                                this.newTodo = '';
+                            }
+                            $(event.target).parent().siblings('input').focus();
                         },
                         del: function (index) {
                             this.list.splice(index, 1);

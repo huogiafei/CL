@@ -227,7 +227,10 @@
                                 <div class="input-field col s12">
                                     <p class="as-add-title">
                                         <span class="left">Logo </span>
-                                        <i class="material-icons grey-text text-lighten-1 as-img-tips" title="Maximum size of 1MB jpg, png, gif">error</i>
+                                        <a class="tooltipped">
+                                            <i class="material-icons grey-text text-lighten-1 as-img-tips"
+                                               title="">error</i>
+                                        </a>
                                     </p>
                                     <!--<button class="btn cl-red">upload</button>-->
                                     <div v-show="step3.logo.id == ''">
@@ -243,7 +246,10 @@
                                 <div class="input-field col s12">
                                     <p class="as-add-title">
                                         <span class="left">Store Images </span>
-                                        <i class="material-icons grey-text text-lighten-1 as-img-tips" title="Maximum size of 1MB jpg, png, gif">error</i>
+                                        <a class="tooltipped">
+                                            <i class="material-icons grey-text text-lighten-1 as-img-tips"
+                                               title="">error</i>
+                                        </a>
                                         <span class="right teal-text text-lighten-2">{{step3.imgs.length}} / {{step3.imgsLimit}}</span>
                                     </p>
                                     <div v-show="step3.imgs.length < step3.imgsLimit">

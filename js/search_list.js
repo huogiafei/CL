@@ -44,6 +44,10 @@ function entry_searchList() {
                     else {
                         location.href = this.stores[i].storeLink;
                     }
+                },
+
+                loadMore:function(){
+                    storesGet('add');
                 }
             },
             mounted: function () {
@@ -187,11 +191,13 @@ function entry_searchList() {
         /*infinite load*/
         function scrollLoad() {
             $(window).scroll(function () {
-                if ($('body').height() * 0.8 <
-                    $('body').scrollTop() + $(window).height()) {
-                    if (!slApp.page.isEnd && !slApp.page.isLock) {
-                        slApp.page.isLock = true;
-                        storesGet('add');
+                if (slApp.page.curPage % 3 != 0) {
+                    if ($('body').height() * 0.9 <
+                        $('body').scrollTop() + $(window).height()) {
+                        if (!slApp.page.isEnd && !slApp.page.isLock) {
+                            slApp.page.isLock = true;
+                            storesGet('add');
+                        }
                     }
                 }
             })
