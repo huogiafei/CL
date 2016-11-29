@@ -72,7 +72,7 @@
 
                                 <div class="input-field col s12">
                                     <select id="subCategory2" class="sub-category">
-                                        <option value="0">Choose second subcategory (optional) </option>
+                                        <option value="0">Choose second subcategory (optional)</option>
                                         <option v-for="(cat,index) in step1.subCategoryList.list"
                                                 :selected="cat.id == step1.subCategoryId2"
                                                 :value="cat.id">{{cat.name}}
@@ -86,7 +86,7 @@
                                     <select id="businessType">
                                         <option v-for="item in step1.businessTypeList.list"
                                                 :selected="item.id == step1.businessType"
-                                                :value = item.id>{{item.title}}
+                                                :value=item.id>{{item.title}}
                                         </option>
                                     </select>
                                     <label>Business type</label>
@@ -232,7 +232,6 @@
                                                title="">error</i>
                                         </a>
                                     </p>
-                                    <!--<button class="btn cl-red">upload</button>-->
                                     <div v-show="step3.logo.id == ''">
                                         <div v-img-upload:logo :id="'logo-upload'"></div>
                                     </div>
@@ -334,9 +333,12 @@
                             <div class="col s12 center-align">
                                 <div class="as-finish-bg"></div>
                                 <p class="as-finish-title cl-red-text">Congratulations!</p>
-                                <p class="as-finish-text">Your listings request has been sent successfully. And your request need to be approved by administrator. Once your request has been confirmed we will send an email to inform you.</p>
+                                <p class="as-finish-text">Your listings request has been sent successfully. And your
+                                    request need to be approved by administrator. Once your request has been confirmed
+                                    we will send an email to inform you.</p>
                                 <div class="as-finish-link">
-                                    <a href="javascript:void(0)" class="btn waves-effect blue lighten-2" onclick="location.reload();">edit again</a>
+                                    <a href="javascript:void(0)" class="btn waves-effect blue lighten-2"
+                                       onclick="location.reload();">edit again</a>
                                     <a href="#" target="_blank" class="btn waves-effect orange lighten-2">preview</a>
                                     <a href="#" class="btn waves-effect cl-red">finish</a>
                                 </div>
@@ -363,7 +365,6 @@
 </div>
 
 
-
 <!-- step3 add list TEMP -->
 <script type="text/x-template" id="addListTemp">
     <div class="as-add-group">
@@ -377,7 +378,7 @@
             </li>
         </ul>
         <div class="as-add-bottom">
-            <input type="text" class="as-add-input" @keyup.enter="add" v-model="newTodo">
+            <input type="text" class="as-add-input" @keyup.enter="add" v-model.trim="newTodo">
             <button type="button" class="btn btn-floating btn-flat as-add-btn" @click.prevent="add"><i
                     class="material-icons">add</i></button>
         </div>

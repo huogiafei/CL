@@ -10,7 +10,7 @@ function entry_addStore() {
             data: {
                 map: {},
                 curStep: '',
-                isLoading:true, //init loading
+                isLoading: true, //init loading
                 stepper: {
                     title: ['basic info', 'address', 'about us', 'contact', 'done'],
                 },
@@ -157,9 +157,9 @@ function entry_addStore() {
                 getCurStep();
                 this.map = initMap(this.step2.geo);
                 $('.tooltipped').tooltip({
-                    position:'right',
-                    delay:50,
-                    tooltip:'Maximum size of 1MB jpg, png, gif'
+                    position: 'right',
+                    delay: 50,
+                    tooltip: 'Maximum size of 1MB jpg, png, gif'
                 })
             },
 
@@ -335,10 +335,8 @@ function entry_addStore() {
                     },
                     methods: {
                         add: function (event) {
-                            /*var val = event.target.value;
-                             console.log(val);*/
-                            if(this.newTodo.trim() != ""){
-                                this.list.push(this.newTodo.trim())
+                            if (this.newTodo != "") {
+                                this.list.push(this.newTodo);
                                 this.newTodo = '';
                             }
                             $(event.target).parent().siblings('input').focus();
@@ -351,17 +349,14 @@ function entry_addStore() {
                 'img-upload': {
                     template: '#imgTemp',
                     props: ['src', 'id', 'type', 'index'],
-                    data: function () {
-                        return {
-                            type: this.type,
-                            id: this.id,
-                            isActive: false,
-                            index: this.index
+                    data:function(){
+                        return{
+                            isActive:false,
                         }
                     },
                     methods: {
                         menuToggle: function () {
-                            this.isActive = !this.isActive
+                            this.isActive = !this.isActive;
                         },
                         replace: function () {
                             switch (this.type) {
@@ -713,7 +708,7 @@ function entry_addStore() {
                     "logo": app.step3.logo.id,
                     "imgs": JSON.stringify(app.storeImgs),
                     "slogan": app.step3.slogan,
-                    "about": app.step3.about.replace(/\n/g,"<br>"),
+                    "about": app.step3.about.replace(/\n/g, "<br>"),
                     "services": JSON.stringify(app.step3.services),
                     "products": JSON.stringify(app.step3.products),
                     "specialist": JSON.stringify(app.step3.specialist),

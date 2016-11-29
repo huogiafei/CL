@@ -77,7 +77,7 @@ $(function () {
             },
 
             signSubmit: function () {
-                var fullName = this.signup.fullName.trim();
+                var fullName = this.signup.fullName;
                 var email = this.signup.email;
                 var password = this.signup.password;
                 var phone = this.signup.phone;

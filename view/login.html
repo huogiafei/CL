@@ -72,7 +72,7 @@
                 <div class="input-field col s12 login-row">
                     <input id="signName" type="text" class="validate" required
                            @keyup = "checkNull"
-                           v-model="signup.fullName">
+                           v-model.trim="signup.fullName">
                     <label for="signName" data-error="enter your full name">Full Name</label>
                 </div>
 
@@ -80,7 +80,7 @@
                     <input id="signEmail" type="email" class="validate" required
                            @keyup = "checkNull"
                            @blur = 'emailCheck'
-                           v-model="signup.email">
+                           v-model.trim="signup.email">
                     <label for="signEmail" :data-error="signup.error.email">Email</label>
                 </div>
 
@@ -98,7 +98,7 @@
                 <div class="input-field col s12 login-row">
                     <input id="signPhone" type="tel" class="validate" required
                            @keyup = "checkNull"
-                           v-model="signup.phone">
+                           v-model.trim="signup.phone">
                     <label for="signPhone" data-error="enter your phone">Phone</label>
                 </div>
 
